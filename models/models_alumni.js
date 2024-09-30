@@ -108,4 +108,5 @@ requestStudents: [{
 
 });
 
-module.exports = mongoose.model('Alumni', alumni_schema)
+
+module.exports = mongoose.model('Alumni', alumni_schema);
