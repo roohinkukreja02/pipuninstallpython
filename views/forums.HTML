@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Alumni Forums</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .thread-card {
+            transition: all 0.3s ease;
+        }
+        .thread-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .like-btn:hover, .dislike-btn:hover, .comment-btn:hover {
+            color: #4A5568;
+        }
+        .header{
+            background: black;
+        }
+        header {
+    background: #000000;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #444;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e8491d;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s ease;    
+    display: inline-block; 
+}
+
+nav ul li a:hover {
+    transform: scale(1.2);
+}
+
+
+.search-bar {
+    display: flex;
+}
+
+.search-bar input[type="text"] {
+    padding: 5px;
+    border-radius: 5px 0 0 5px;
+    border: none;
+    outline: none;
+}
+
+.search-bar button {
+    font-size:17px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: #e8491d;
+    color: #fff;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #d7381a;
+}
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <header class="text-white p-4 header">
+        <div class="logo">StrengthSphere</div>
+        <nav>
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#Events">Events</a></li>
+                <li><a href="#Testimonials">Testimonial</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <!--<input type="text" placeholder="Search...">-->
+            <a href=""><button class="login">Get Started</button></a>
+
+        </div>
+    </header>
+    <h1 class="text-3xl font-bold text-center">Student Alumni Forums</h1>
+    <main class="container mx-auto mt-8 p-4">
+        <div class="flex justify-between items-center mb-6">
+            <button id="newThreadBtn" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">
+                New Thread
+            </button>
+            <div class="relative inline-block text-left">
+                <select id="domainFilter" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="all">All Domains</option>
+                    <option value="technology">Technology</option>
+                    <option value="business">Business</option>
+                    <option value="science">Science</option>
+                    <option value="arts">Arts</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                </div>
+            </div>
+        </div>
+
+        <div id="threadList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 cursor-pointer">
+            <!-- Thread cards will be dynamically added here -->
+             
+        </div>
+    </main>
+
+    <!-- Modal for creating a new thread -->
+    <div id="newThreadModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-4">Create New Thread</h2>
+            <form id="newThreadForm">
+                <div class="mb-4">
+                    <label for="threadTitle" class="block text-gray-700 text-sm font-bold mb-2">Title</label>
+                    <input type="text" id="threadTitle" name="threadTitle" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                </div>
+                <div class="mb-4">
+                    <label for="threadDomain" class="block text-gray-700 text-sm font-bold mb-2">Domain</label>
+                    <select id="threadDomain" name="threadDomain" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                        <option value="technology">Technology</option>
+                        <option value="business">Business</option>
+                        <option value="science">Science</option>
+                        <option value="arts">Arts</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="threadDescription" class="block text-gray-700 text-sm font-bold mb-2">Description</label>
+                    <textarea id="threadDescription" name="threadDescription" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32" required></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="threadImage" class="block text-gray-700 text-sm font-bold mb-2">Image URL</label>
+                    <input type="url" id="threadImage" name="threadImage" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                </div>
+                <div class="flex items-center justify-between">
+                    <button type="submit" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Create Thread
+                    </button>
+                    <button type="button" id="cancelNewThread" class="bg-gray-500 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for comments -->
+    <div id="commentModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-4">Comments</h2>
+            <div id="commentList" class="mb-4 max-h-60 overflow-y-auto">
+                <!-- Comments will be dynamically added here -->
+            </div>
+            <form id="commentForm">
+                <div class="mb-4">
+                    <label for="newComment" class="block text-gray-700 text-sm font-bold mb-2">Add a comment</label>
+                    <textarea id="newComment" name="newComment" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32" required></textarea>
+                </div>
+                <div class="flex items-center justify-between">
+                    <button type="submit" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Post Comment
+                    </button>
+                    <button type="button" id="cancelComment" class="bg-gray-500 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const threads = [
+            { id: 1, title: "The Future of AI", domain: "technology", description: "Discussing the potential impacts and advancements in Artificial Intelligence.", likes: 15, dislikes: 2, comments: [
+                { id: 1, text: "AI is definitely going to change the world!" },
+                { id: 2, text: "We need to be cautious about its development." }
+            ], image: "https://source.unsplash.com/random/800x600?ai" },
+            { id: 2, title: "Sustainable Business Practices", domain: "business", description: "Exploring eco-friendly approaches in modern business management.", likes: 20, dislikes: 1, comments: [
+                { id: 1, text: "Sustainability is key for future business success." },
+                { id: 2, text: "It's great to see more companies adopting these practices." }
+            ], image: "https://source.unsplash.com/random/800x600?sustainability" },
+            { id: 3, title: "Quantum Computing Breakthroughs", domain: "science", description: "Recent developments in quantum computing and their implications.", likes: 18, dislikes: 3, comments: [
+                { id: 1, text: "Quantum computing is mind-blowing!" },
+                { id: 2, text: "I wonder how it will affect cryptography." }
+            ], image: "https://source.unsplash.com/random/800x600?quantum" },
+            { id: 4, title: "Modern Art Movements", domain: "arts", description: "Analyzing contemporary trends in visual arts and their cultural significance.", likes: 10, dislikes: 5, comments: [
+                { id: 1, text: "Modern art is so diverse and exciting." },
+                { id: 2, text: "I love how it challenges traditional perspectives." }
+            ], image: "https://source.unsplash.com/random/800x600?modern+art" },
+            { id: 5, title: "Modern Art Movements", domain: "arts", description: "Analyzing contemporary trends in visual arts and their cultural significance.", likes: 10, dislikes: 5, comments: [
+                { id: 1, text: "Modern art is so diverse and exciting." },
+                { id: 2, text: "I love how it challenges traditional perspectives." }
+            ], image: "https://source.unsplash.com/random/800x600?modern+art" },
+            { id: 6, title: "Modern Art Movements", domain: "arts", description: "Analyzing contemporary trends in visual arts and their cultural significance.", likes: 10, dislikes: 5, comments: [
+                { id: 1, text: "Modern art is so diverse and exciting." },
+                { id: 2, text: "I love how it challenges traditional perspectives." }
+            ], image: "https://source.unsplash.com/random/800x600?modern+art" },
+            { id: 7, title: "Modern Art Movements", domain: "arts", description: "Analyzing contemporary trends in visual arts and their cultural significance.", likes: 10, dislikes: 5, comments: [
+                { id: 1, text: "Modern art is so diverse and exciting." },
+                { id: 2, text: "I love how it challenges traditional perspectives." }
+            ], image: "https://source.unsplash.com/random/800x600?modern+art" },
+        ];
+
+        function createThreadCard(thread) {
+            return `
+                <div class="thread-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="${thread.image}" alt="${thread.title}" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h2 class="text-xl font-semibold mb-2">${thread.title}</h2>
+                        <p class="text-gray-600 mb-4">${thread.description.substring(0, 100)}<a href="#" class="text-red-800">READ MORE</a></p>
+                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">${thread.domain}</span>
+                    </div>
+                    <div class="bg-gray-100 px-6 py-4">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <button class="like-btn mr-2" data-thread-id="${thread.id}"><i class="far fa-thumbs-up"></i> <span>${thread.likes}</span></button>
+                                <button class="dislike-btn mr-2" data-thread-id="${thread.id}"><i class="far fa-thumbs-down"></i> <span>${thread.dislikes}</span></button>
+                            </div>
+                            <button class="comment-btn" data-thread-id="${thread.id}"><i class="far fa-comment"></i> ${thread.comments.length}</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderThreads(threadsToRender) {
+            const threadList = document.getElementById('threadList');
+            threadList.innerHTML = threadsToRender.map(createThreadCard).join('');
+
+            // Add event listeners for like, dislike, and comment buttons
+            threadList.querySelectorAll('.like-btn').forEach(btn => {
+                btn.addEventListener('click', handleLike);
+            });
+            threadList.querySelectorAll('.dislike-btn').forEach(btn => {
+                btn.addEventListener('click', handleDislike);
+            });
+            threadList.querySelectorAll('.comment-btn').forEach(btn => {
+                btn.addEventListener('click', handleCommentClick);
+            });
+        }
+
+        function handleLike(e) {
+            const threadId = parseInt(e.currentTarget.dataset.threadId);
+            const thread = threads.find(t => t.id === threadId);
+            thread.likes++;
+            e.currentTarget.querySelector('span').textContent = thread.likes;
+        }
+
+        function handleDislike(e) {
+            const threadId = parseInt(e.currentTarget.dataset.threadId);
+            const thread = threads.find(t => t.id === threadId);
+            thread.dislikes++;
+            e.currentTarget.querySelector('span').textContent = thread.dislikes;
+        }
+
+        function handleCommentClick(e) {
+            const threadId = parseInt(e.currentTarget.dataset.threadId);
+            const thread = threads.find(t => t.id === threadId);
+            showCommentModal(thread);
+        }
+
+        function showCommentModal(thread) {
+            const commentModal = document.getElementById('commentModal');
+            const commentList = document.getElementById('commentList');
+            const commentForm = document.getElementById('commentForm');
+
+            // Populate existing comments
+            commentList.innerHTML = thread.comments.map(comment => `
+                <div class="mb-2 p-2 bg-gray-100 rounded">
+                    <p>${comment.text}</p>
+                </div>
+            `).join('');
+
+            // Show the modal
+            commentModal.classList.remove('hidden');
+            commentModal.classList.add('flex');
+
+            // Handle new comment submission
+            commentForm.onsubmit = (e) => {
+                e.preventDefault();
+                const newCommentText = document.getElementById('newComment').value;
+                if (newCommentText.trim()) {
+                    const newComment = { id: thread.comments.length + 1, text: newCommentText };
+                    thread.comments.push(newComment);
+                    commentList.innerHTML += `
+                        <div class="mb-2 p-2 bg-gray-100 rounded">
+                            <p>${newComment.text}</p>
+                        </div>
+                    `;
+                    document.getElementById('newComment').value = '';
+                    // Update the comment count on the thread card
+                    const commentBtn = document.querySelector(`.comment-btn[data-thread-id="${thread.id}"]`);
+                    commentBtn.innerHTML = `<i class="far fa-comment"></i> ${thread.comments.length}`;
+                }
+            };
+
+            // Handle modal close
+            document.getElementById('cancelComment').onclick = () => {
+                commentModal.classList.add('hidden');
+                commentModal.classList.remove('flex');
+            };
+        }
+
+        document.getElementById('domainFilter').addEventListener('change', (e) => {
+            const selectedDomain = e.target.value;
+            const filteredThreads = selectedDomain === 'all' ? threads : threads.filter(thread => thread.domain === selectedDomain);
+            renderThreads(filteredThreads);
+        });
+
+        document.getElementById('newThreadBtn').addEventListener('click', () => {
+            document.getElementById('newThreadModal').classList.remove('hidden');
+            document.getElementById('newThreadModal').classList.add('flex');
+        });
+
+        document.getElementById('cancelNewThread').addEventListener('click', () => {
+            document.getElementById('newThreadModal').classList.add('hidden');
+            document.getElementById('newThreadModal').classList.remove('flex');
+        });
+
+        document.getElementById('newThreadForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const newThread = {
+                id: threads.length + 1,
+                title: document.getElementById('threadTitle').value,
+                domain: document.getElementById('threadDomain').value,
+                description: document.getElementById('threadDescription').value,
+                image: document.getElementById('threadImage').value,
+                likes: 0,
+                dislikes: 0,
+                comments: []
+            };
+            threads.unshift(newThread);
+            renderThreads(threads);
+            document.getElementById('newThreadModal').classList.add('hidden');
+            document.getElementById('newThreadModal').classList.remove('flex');
+            document.getElementById('newThreadForm').reset();
+        });
+
+        renderThreads(threads);
+    </script>
+</body>
+</html>
