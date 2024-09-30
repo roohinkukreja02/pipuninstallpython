@@ -42,63 +42,30 @@ const sendOTP = (email, otp) => {
 
 
 
-const control_reg_free=async (req,res)=>{
+const controller_reg_student=async (req,res)=>{
     const body=req.body;
-    const { day, month, year } = req.body;
+    
     if(body.password===body.confirm_password)
     {
-    const date = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+   
     try{
     const create=await model1.create({
-        first_name: body.first_name,
-
-        last_name: body.last_name,
-
-        phno: body.phno,
-          
-        dob: date,
-
-        photo: body.photo,
-
-
-
-
-       street: body.street ,
-
-       apartment: body.apartment,
-
-       city: body.city,
-
-       state: body.state,
-
-       pincode: body.pincode,
+        
+        firstName: body.first_name,
+        lastName: body.last_name,
+        email: body.email,
+        graduationYear: body.grad_year,
+        phone: body.phno,
+        department: body.department,
+        password: body.password,
+        
+        
+        committee: body.committee,
+        interests: body.interests,
+        techDomain: body.domain,
+        achievements: body.achievements,
 
 
-
-
-       linkedin: body.linkedin,
-
-       otherlinks: body.otherlinks,
-
-
-
-
-
-       email: body.email,
-
-       username: body.username,
-
-       password: body.password,
-
-
-       freelancer: { 
-
-            role: true,
-
-            skills: body.skills,
-
-            resume: body.resume,
-      },
 
     });
 
