@@ -13,6 +13,7 @@ const studentSchema = new Schema({
         type: String,
         unique: true
     },
+    username: String,
     graduationYear: Number,
     phone: Number,
     department: String,

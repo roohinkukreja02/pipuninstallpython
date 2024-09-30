@@ -18,10 +18,18 @@ module.exports.addForum = async(req,res)=>{
     res.redirect('forum')
 }
 
+module.exports.deleteForum = async(req,res)=>{
+    const {id} = req.params;
+    const post = await Forum.findByIdAndDelete(id);
+    post.author = 'anonymous'
+    await post.save()
+    res.redirect('forum')
+}
+
 module.exports.showForum = async(req,res)=>{
     const {id} = req.params;
     const post = await Forum.findById(id)
-    res.render('forum', {post})
+    res.render('showForum', {post})
 }
 
 

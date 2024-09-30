@@ -77,6 +77,14 @@ app.use('/dashboard/:id', alumniRoutes);
 
 app.use("/", routes_extras);
 
+app.get('/gallery', (req,res)=>{
+  res.render('gallery')
+})
+
+app.get('/gallery/add', (req,res)=>{
+  res.render('gallery')
+})
+
 app.listen(port, (req,res)=>{
     console.log(`Server started on port ${port}`);
 });
