@@ -77,6 +77,6 @@ app.use('/dashboard/:id', alumniRoutes);
 
 app.use("/", routes_extras);
 
-app.listen(port, ()=>{
+app.listen(port, (req,res)=>{
     console.log(`Server started on port ${port}`);
 });
