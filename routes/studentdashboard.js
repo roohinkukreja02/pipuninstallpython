@@ -21,6 +21,9 @@ router.route('/event')
 router.route('/event/:eventId')
     .delete(student.removeEvent)
 
+router.route('/job')
+    .get(student.jobList)
+
 router.route('/job/:jobId')
     .post(student.applyJob)
 

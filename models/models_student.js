@@ -26,7 +26,7 @@ const studentSchema = new Schema({
     
     mentors: [{
         type: Schema.Types.ObjectId,
-        ref: 'Alumni'
+        ref: 'Alumni1'
     }],
     url: [{
         type: String
