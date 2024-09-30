@@ -170,7 +170,12 @@ const control_log=async (req,res)=>
         console.log("control reached");
         const body=req.body;
         console.log(body.email);
-        const search_one=await models_alumni.findOne({email: body.email});
+        let search_one=await models_alumni.findOne({email: body.email});
+        if(!search_one)
+        {
+            search_one=await models_student.findOne({email: body.email});
+        }
+        console.log(search_one);
         if(search_one){ //&& search_one.password===body.password){
             try{
     
@@ -181,6 +186,7 @@ const control_log=async (req,res)=>
                 current_name=search_one.first_name;
                 current_role=search_one.current_role;
                 console.log(body.email);
+                //console.log(search)
     
                 if(body)
                 sendOTP(body.email, current_otp);

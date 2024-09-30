@@ -29,13 +29,19 @@
                     </a>
                 </div>
                 <div style="display: flex; justify-content: space-between; gap: 10px;">
-                <button><a href="#" style="color: white;">Student</a></button>
-                <button><a href="#" style="color: white;">Alumni</a></button>
+                <button><a href="/student" style="color: white;">Student</a></button>
+                <button><a href="/alumni" style="color: white;">Alumni</a></button>
                 </div>
             </form>
+           
         </div>
-        <div class="form-container sign-in">
-            <form id="signInForm">
+        <div class="form-container sign-in" >
+            <div id="signInForm">
+
+                <form action="/login" method="post">
+                  <!--- replace br by something better in css file-->
+                    <br>
+                    <br>
                 <h1>Sign in</h1>
                 <div class="social-icons">
                     <a href="#" class="icon">
@@ -52,23 +58,26 @@
                     </a>
                 </div>
                 <span>Or use your email password</span>
-                <input type="email" name="Email" placeholder="Email" required>
+                <input type="email" name="email" placeholder="Email" required>
 
                 <div class="password-container">
-                    <input type="password" name="Password" placeholder="Password" required>
+                    <input type="password" name="password" placeholder="Password" required>
                     <i class="fa fa-eye-slash toggle-password"></i>
                 </div>
                 <a href="#" id="forgotPass">Forget your password?</a>
-                <button id="sendOtpButton" type="button">Send OTP</button>
+                <button id="sendOtpButton" name="otp" type="submit">Send OTP</button>
+                </form>
+ 
                 <div id="otpForm">
-                    <form>
-                        <input type="text" id="otpInput" placeholder="Enter OTP" required style="width: 100%;">
-                        <button id="verifyOtpButton" type="button">Verify OTP</button>
+                    <form action="/verifyOTP" method="post">
+                        <input type="text" name="otp" id="otpInput" placeholder="Enter OTP" style="width: 100%;">
+                        <button id="verifyOtpButton" type="submit">Verify OTP</button>
                     </form>
                 </div>
-            </form>
-
+                
+            </div>   
         </div>
+
         <div class="toggle-container">
             <div class="toggle">
                 <div class="toggle-panel toggle-left">
