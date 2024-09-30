@@ -21,7 +21,7 @@ const seedDB = async()=>{
     await Alumni.deleteMany({});
     for(let i = 0; i < 300; i++)
     {
-        const random1000 = Math.floor(Math.random() * 100000);
+        const random1000 = Math.floor(Math.random() * 125000);
         // const price = Math.floor(Math.random() * 10000);
         const c = new Alumni({
             city: `${cities[random1000].name}, ${cities[random1000].country}`,
