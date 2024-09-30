@@ -3,6 +3,7 @@ const mongoose=require("mongoose");
 const port=6006;
 const app=express();
 const session=require("express-session");
+const routes_auth=require("./routes/routes-auth")
 
 //parsing body and using in functions
 app.use(express.json());
@@ -13,6 +14,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 //for ejs files
 app.set("view engine", "ejs");
+
 
 //mongoDB connection
 mongoose.connect("mongodb://127.0.0.1:27017/codeissance")
@@ -37,7 +39,7 @@ app.use(session({
 
 
 
-
+app.use("/", routes_auth);
 
 app.listen(port, ()=>{
     console.log(`Server started on port ${port}`);

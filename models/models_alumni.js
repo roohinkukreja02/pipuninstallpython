@@ -1,6 +1,6 @@
 const mongoose=require("mongoose");
-
-const schema_register= new mongoose.Schema({
+const Schema=mongoose.Schema;
+const alumni_schema= new mongoose.Schema({
 
 first_name: {
             required: true,
@@ -14,12 +14,12 @@ last_name: {
           },
 
 grad_year: {
-            required: true,
+            //required: true,
             type: Number,
           },
 
 department: {
-            required: true,
+            //required: true,
             type: String,
           },
 
@@ -32,52 +32,52 @@ email: {
 
 
 phno: {
-          required: true,
+          //required: true,
        
           type: Number,
           },
 
 photo: {
-            required: true,
+            //required: true,
            
             type: String,
           },
 
 city: {
-            required: true,
+            //required: true,
            
             type: String,
           },
 
 
-          
+
 linkedin:{
-            required: true,
+            //required: true,
            
             type: String,
 },
 
 interests:{
-    required: true,
+    //required: true,
    
     type: String,
 },
 
 company:{
-    required: true,
+    //required: true,
    
     type: String,
 },
 
 domain: {
-    required: true,
+    //required: true,
    
     type: String,
 },
 
 
 achievements: {
-    required: true,
+   // required: true,
    
     type: String,
 },
@@ -85,7 +85,7 @@ achievements: {
 
 resume:{
     
-        required: true,
+        //required: true,
        
         type: String,
 
@@ -108,6 +108,4 @@ requestStudents: [{
 
 });
 
-const alumni_model= mongoose.model("Alumni", schema_register);
-
-module.exports={alumni_model};
+module.exports = mongoose.model('Alumni', alumni_schema)
