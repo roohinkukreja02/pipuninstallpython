@@ -145,6 +145,7 @@ const controller_reg_alumni=async (req,res)=>{
 
     if(create){
         create.geometry = geoData.features[0].geometry;
+        await create.save()
         res.json({msg: "created"});
     }
        
