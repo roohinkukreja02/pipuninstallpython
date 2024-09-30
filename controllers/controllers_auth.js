@@ -92,7 +92,7 @@ const controller_reg_student=async (req,res)=>{
 //working
 const controller_reg_alumni=async (req,res)=>{
     const body=req.body;
-    
+    console.log(body);
     if(body.password===body.confirm_password)
     {
    
@@ -127,7 +127,7 @@ const controller_reg_alumni=async (req,res)=>{
 
     domain: body.domain,
 
-
+    password: body.password,
     achievements: body.achievements,
 
 
@@ -164,7 +164,7 @@ const control_log=async (req,res)=>
         console.log("control reached");
         const body=req.body;
         console.log(body.email);
-        const search_one=await model1.findOne({email: body.email});
+        const search_one=await models_alumni.findOne({email: body.email});
         if(search_one){ //&& search_one.password===body.password){
             try{
     
@@ -178,6 +178,7 @@ const control_log=async (req,res)=>
     
                 if(body)
                 sendOTP(body.email, current_otp);
+            console.log(current_otp);
                 res.send(`<script>alert('This is an alert from the server!');</script>`);
               
                 }
@@ -206,9 +207,9 @@ const control_log=async (req,res)=>
         console.log(current_otp);
         if(otp==current_otp)
         {
-            console.log(current_username);
+            //console.log(current_username);
             //req.session.user=body
-            req.session.user1={email: current_email, username: current_username };
+            req.session.user1={email: current_email};
             console.log(req.session.user1);
             req.session.save((err) => {
                 if (err) {
@@ -218,7 +219,7 @@ const control_log=async (req,res)=>
             });
             console.log(req.session.user1.email);
             
-            res.redirect("/dash-free");
+            res.end("worked");
         }
         else
         res.end("incorrect otp");
