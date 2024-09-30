@@ -11,11 +11,15 @@ const path = require('path')
 const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
 const session=require("express-session");
+const routes_auth=require("./routes/routes-auth");
+const routes_extras=require("./routes/routes-extras");
+
 const flash = require('connect-flash')
 const multer  = require('multer')
 const upload = multer({ dest: 'uploads/' })
 
 const alumniRoutes = require('./routes/alumnidashboard')
+
 
 
 //parsing body and using in functions
@@ -32,6 +36,7 @@ app.engine('ejs', ejsMate);
 app.use(express.static('public'));
 //for ejs files
 app.set("view engine", "ejs");
+
 
 //mongoDB connection
 mongoose.connect("mongodb://127.0.0.1:27017/codeissance")
@@ -63,9 +68,14 @@ app.use((req, res, next) =>{
     next();
 })
 
+
+
+app.use("/", routes_auth);
 // ROUTES
 app.use('/dashboard/:id', alumniRoutes);
 
+
+app.use("/", routes_extras);
 
 app.listen(port, ()=>{
     console.log(`Server started on port ${port}`);

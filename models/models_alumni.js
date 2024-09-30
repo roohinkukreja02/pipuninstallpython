@@ -1,5 +1,9 @@
 const mongoose=require("mongoose");
-const Schema = mongoose.Schema;
+
+const Schema=mongoose.Schema;
+//const alumni_schema= new mongoose.Schema({
+
+//const Schema = mongoose.Schema;
 
 const imageSchema = new Schema({
     url: String,
@@ -7,6 +11,7 @@ const imageSchema = new Schema({
 })
 
 const schema_register= new mongoose.Schema({
+
 
 first_name: {
             required: true,
@@ -20,12 +25,12 @@ last_name: {
           },
 
 grad_year: {
-            required: true,
+            //required: true,
             type: Number,
           },
 
 department: {
-            required: true,
+            //required: true,
             type: String,
           },
 
@@ -37,20 +42,24 @@ email: {
           },
 
 
+
+
+          //required: true,
+
 phone: {
-          required: true,
+          //required: true,
        
           type: Number,
           },
 
 photo: {
-            required: true,
+            //required: true,
            
             type: String,
           },
 
 city: {
-            required: true,
+            //required: true,
            
             type: String,
           },
@@ -60,43 +69,43 @@ geometry: {
             type: {
                 type: String,
                 enum: ['Point'],
-                required: true
+                //required: true
             },
             coordinates: {
                 type: [Number],
-                required: true
+                //required: true
             }
     },
 
 
-          
+
 linkedin:{
-            required: true,
+            //required: true,
            
             type: String,
 },
 
 interests:{
-    required: true,
+    //required: true,
    
     type: String,
 },
 
 company:{
-    required: true,
+    //required: true,
    
     type: String,
 },
 
 domain: {
-    required: true,
+    //required: true,
    
     type: String,
 },
 
 
 achievements: {
-    required: true,
+   // required: true,
    
     type: String,
 },
@@ -104,9 +113,17 @@ achievements: {
 
 resume:{
     
-        required: true,
+        //required: true,
        
         type: String,
+
+},
+
+password:{
+    
+    //required: true,
+   
+    type: String,
 
 },
 
@@ -127,4 +144,5 @@ requestStudents: [{
 
 });
 
-module.exports = mongoose.model("Alumni", schema_register);
+
+module.exports = mongoose.model('Alumni1', schema_register);
