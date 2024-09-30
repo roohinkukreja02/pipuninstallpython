@@ -20,6 +20,21 @@ const upload = multer({ dest: 'uploads/' })
 
 const alumniRoutes = require('./routes/alumnidashboard')
 
+const MongoStore = require('connect-mongo');
+
+app.use(session({
+    secret: 'your_secret_key',
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+        mongoUrl: 'mongodb://127.0.0.1:27017/sessionstore'
+    }),
+    cookie: {
+        maxAge: 3600000,  // 1 hour
+        httpOnly: true,
+        secure: false
+    }
+}));
 
 
 //parsing body and using in functions
@@ -44,18 +59,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/codeissance")
 .catch((err)=>{console.log(err)});
 
 
-app.use(session({
-    secret: 'your_secret_key', // Replace with a strong secret key    
-    resave: false,
-    saveUninitialized: true,
-   
 
-    cookie: {
-      maxAge: 3600000,  // 1 hour
-      httpOnly: true,   // Secure cookie
-      secure: false     // Use true in production with HTTPS
-  }
-  }));
 
 app.use(flash());
 

@@ -9,8 +9,9 @@ async function search_alumni(req,res){
     const users = await models_alumni.find({
       first_name: { $regex: searchTerm, $options: 'i' }, // 'i' makes it case-insensitive
     });
-
+    console.log(req.session.user1.email);
     res.json(users); // Send matching users as JSON response
+
   } catch (error) {
     console.error(error);
     res.status(500).send('Error occurred during search');
@@ -34,7 +35,8 @@ async function sort_alumni(req,res){
   }
 
   try {
-    const users = await models_alumni.find(sortFilter).sort({ city: 1, domain: 1, grad_year }); // Adjust sorting criteria as needed
+    const users = await models_alumni.find(sortFilter).sort({ city: 1, domain: 1, grad_year });
+     // Adjust sorting criteria as needed
     res.json(users);
   } catch (error) {
     console.error(error);
