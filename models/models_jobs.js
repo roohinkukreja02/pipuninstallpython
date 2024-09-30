@@ -11,3 +11,5 @@ const jobSchema = new Schema({
         ref: 'Alumni'
     }
 })
+
+module.exports = new mongoose.model('Job', jobSchema)

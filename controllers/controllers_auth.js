@@ -1,5 +1,5 @@
 const models_student=require("../models/models_student");
-
+const models_alumni=require("../models/models_alumni");
 
 
 
@@ -41,7 +41,7 @@ const sendOTP = (email, otp) => {
 };
 
 
-
+//working
 const controller_reg_student=async (req,res)=>{
     const body=req.body;
     
@@ -87,3 +87,160 @@ const controller_reg_student=async (req,res)=>{
    }
 
 };
+
+
+//working
+const controller_reg_alumni=async (req,res)=>{
+    const body=req.body;
+    console.log(body);
+    if(body.password===body.confirm_password)
+    {
+    return res.send(body);
+    try{
+    const create=await models_alumni.create({
+        
+    first_name: body.first_name,
+
+    last_name: body.last_name,
+
+    grad_year: body.grad_year,
+
+    department: body.department,
+
+
+    email: body.email,
+
+
+    phno: body.phno,
+
+    photo: body.photo,
+
+    city: body.city,
+
+
+            
+    linkedin: body.linkedin,
+
+    interests: body.interests,
+
+    company: body.company,
+
+    domain: body.domain,
+
+    password: body.password,
+    achievements: body.achievements,
+
+
+    resume:body.resume,
+
+
+
+    });
+
+    if(create){
+        
+        res.json({msg: "created"});
+    }
+       
+    else{
+        console.log(create);
+    }
+   }
+   catch(err){
+       console.log(err);
+   }
+   }
+   else{
+    console.log("Passwords don't match");
+   }
+
+};
+
+
+
+
+const control_log=async (req,res)=>
+    {
+        console.log("control reached");
+        const body=req.body;
+        console.log(body.email);
+        const search_one=await models_alumni.findOne({email: body.email});
+        if(search_one){ //&& search_one.password===body.password){
+            try{
+    
+                if(search_one.password==body.password)
+                {
+                current_otp=generateOTP();
+                current_email=body.email;
+                current_name=search_one.first_name;
+                
+                console.log(body.email);
+    
+                if(body)
+                sendOTP(body.email, current_otp);
+            console.log(current_otp);
+                res.send(`<script>alert('This is an alert from the server!');</script>`);
+              
+                }
+                else
+                {
+                    res.json({msg: "Passwords don't match"});
+                }
+            }
+            catch(err){
+                console.log(err);
+                res.end({msg: "error"});
+            }
+        }
+        else
+        {
+    
+            res.json({msg: "Email doesn't exist"});
+        }
+    
+    };
+    
+    const verify_otp=async (req,res)=>{
+        const body=req.body;
+        const otp=body.otp;
+        console.log(otp)
+        console.log(current_otp);
+        if(otp==current_otp)
+        {
+            //console.log(current_username);
+            //req.session.user=body
+            req.session.user1={email: current_email};
+            console.log(req.session.user1);
+            /*
+            req.session.save((err) => {
+                if (err) {
+                    console.error("Session save error:", err);
+                }
+        
+            });
+            */
+            console.log(req.session.user1.email);
+            
+            res.end("worked");
+        }
+        else
+        res.end("incorrect otp");
+        
+    };
+    
+    const logout=async (req,res)=>{
+    
+        req.session.destroy((err) => {
+            if (err) {
+                return res.status(500).send('Unable to log out');
+            }
+            res.render("choice");
+        });
+    }
+    
+    
+    
+
+
+
+module.exports={controller_reg_student, controller_reg_alumni, control_log, verify_otp};
