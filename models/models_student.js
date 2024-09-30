@@ -12,17 +12,21 @@ const studentSchema = new Schema({
     phone: Number,
     department: String,
     password: String,
-    mentors: {
+    mentors: [{
         type: Schema.Types.ObjectId,
         ref: 'Alumni'
-    },
+    }],
     url: [{
         type: String
     }],
     committee: String,
     interests: String,
     techDomain: String,
-    achievements: String
+    achievements: String,
+    accepted: {
+        type: Boolean,
+        default: false
+    },
 })
 
 module.exports = mongoose.model('Student', studentSchema)

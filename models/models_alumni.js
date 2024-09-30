@@ -49,6 +49,15 @@ city: {
             type: String,
           },
 
+students: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Student'
+    }],
+requestStudents: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Student'
+}],
+
 
 
 
