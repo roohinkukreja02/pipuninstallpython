@@ -16,7 +16,7 @@ const transporter=nodemailer.createTransport({
     }
 });
 
-let current_otp, current_email, current_role;
+let current_otp, current_email, current_role, search_one;
 
 //otp generator
 const generateOTP = () => {
@@ -171,7 +171,7 @@ const control_log=async (req,res)=>
         console.log("control reached");
         const body=req.body;
         console.log(body.email);
-        let search_one=await models_alumni.findOne({email: body.email});
+        search_one=await models_alumni.findOne({email: body.email});
         if(!search_one)
         {
             search_one=await models_student.findOne({email: body.email});
@@ -185,7 +185,8 @@ const control_log=async (req,res)=>
                 current_otp=generateOTP();
                 current_email=body.email;
                 current_name=search_one.first_name;
-                current_role=search_one.current_role;
+                current_role=search_one.role;
+                console.log(current_role);
                 console.log(body.email);
                 //console.log(search)
     
@@ -233,7 +234,7 @@ const control_log=async (req,res)=>
             });
             */
             console.log(req.session.user1.email);
-            if(current_role="alumni")
+            if(current_role==="alumni")
             res.end("worked alumni");
             else
             res.end("worked student");
