@@ -87,3 +87,5 @@ const controller_reg_student=async (req,res)=>{
    }
 
 };
+
+module.exports={controller_reg_student};
