@@ -192,34 +192,34 @@ nav ul li a:hover {
 
     <script>
         const threads = [
-            { id: 1, title: "Campus Resources Tips pls", domain: "business", description: "What are some underutilized resources or facilities on campus that helped you?", likes: 15, dislikes: 2, comments: [
+            { id: 1, title: "The Future of AI", domain: "technology", description: "Discussing the potential impacts and advancements in Artificial Intelligence.", likes: 15, dislikes: 2, comments: [
                 { id: 1, text: "AI is definitely going to change the world!" },
                 { id: 2, text: "We need to be cautious about its development." }
-            ], image: "https://picsum.photos/200/400" },
-            { id: 2, title: "Need help! Share your study techniques", domain: "business", description: "How did you manage exam preparation along with projects and assignments?", likes: 20, dislikes: 1, comments: [
+            ], image: "https://source.unsplash.com/random/800x600?ai" },
+            { id: 2, title: "Sustainable Business Practices", domain: "business", description: "Exploring eco-friendly approaches in modern business management.", likes: 20, dislikes: 1, comments: [
                 { id: 1, text: "Sustainability is key for future business success." },
                 { id: 2, text: "It's great to see more companies adopting these practices." }
-            ], image: "https://picsum.photos/200/400" },
-            { id: 3, title: "Clubs and Societies", domain: "science", description: "Which student clubs or societies did you find most valuable?", likes: 18, dislikes: 3, comments: [
+            ], image: "https://source.unsplash.com/random/800x600?sustainability" },
+            { id: 3, title: "Quantum Computing Breakthroughs", domain: "science", description: "Recent developments in quantum computing and their implications.", likes: 18, dislikes: 3, comments: [
                 { id: 1, text: "Quantum computing is mind-blowing!" },
                 { id: 2, text: "I wonder how it will affect cryptography." }
-            ], image: "https://picsum.photos/200/400" },
-            { id: 4, title: "Placement Preparation", domain: "arts", description: "How did you prepare for campus placements? What resources or strategies worked best for you?", likes: 10, dislikes: 5, comments: [
+            ], image: "https://source.unsplash.com/random/800x600?quantum" },
+            { id: 4, title: "Modern Art Movements", domain: "arts", description: "Analyzing contemporary trends in visual arts and their cultural significance.", likes: 10, dislikes: 5, comments: [
                 { id: 1, text: "Modern art is so diverse and exciting." },
                 { id: 2, text: "I love how it challenges traditional perspectives." }
-            ], image: "https://picsum.photos/200/400" },
-            { id: 5, title: "Further Studies Query!", domain: "arts", description: "Should I go for higher studies right after college or gain work experience first?", likes: 10, dislikes: 5, comments: [
+            ], image: "https://source.unsplash.com/random/800x600?modern+art" },
+            { id: 5, title: "Modern Art Movements", domain: "arts", description: "Analyzing contemporary trends in visual arts and their cultural significance.", likes: 10, dislikes: 5, comments: [
                 { id: 1, text: "Modern art is so diverse and exciting." },
                 { id: 2, text: "I love how it challenges traditional perspectives." }
-            ], image: "https://picsum.photos/200/400" },
-            { id: 6, title: "Need insight on Job Market", domain: "arts", description: "How is the industry evolving, and what skills should we focus on for the future?", likes: 10, dislikes: 5, comments: [
+            ], image: "https://source.unsplash.com/random/800x600?modern+art" },
+            { id: 6, title: "Modern Art Movements", domain: "arts", description: "Analyzing contemporary trends in visual arts and their cultural significance.", likes: 10, dislikes: 5, comments: [
                 { id: 1, text: "Modern art is so diverse and exciting." },
                 { id: 2, text: "I love how it challenges traditional perspectives." }
-            ], image: "https://picsum.photos/200/400" },
-            { id: 7, title: "Workplace Expectations!!!!", domain: "arts", description: "How different is the work environment compared to college life?", likes: 10, dislikes: 5, comments: [
+            ], image: "https://source.unsplash.com/random/800x600?modern+art" },
+            { id: 7, title: "Modern Art Movements", domain: "arts", description: "Analyzing contemporary trends in visual arts and their cultural significance.", likes: 10, dislikes: 5, comments: [
                 { id: 1, text: "Modern art is so diverse and exciting." },
                 { id: 2, text: "I love how it challenges traditional perspectives." }
-            ], image: "https://picsum.photos/200/400" },
+            ], image: "https://source.unsplash.com/random/800x600?modern+art" },
         ];
 
         function createThreadCard(thread) {
@@ -228,7 +228,7 @@ nav ul li a:hover {
                     <img src="${thread.image}" alt="${thread.title}" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h2 class="text-xl font-semibold mb-2">${thread.title}</h2>
-                        <p class="text-gray-600 mb-4">${thread.description.substring(0, 100)}<a href="#" class="text-red-800"></a></p>
+                        <p class="text-gray-600 mb-4">${thread.description.substring(0, 100)}<a href="#" class="text-red-800">READ MORE</a></p>
                         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">${thread.domain}</span>
                     </div>
                     <div class="bg-gray-100 px-6 py-4">

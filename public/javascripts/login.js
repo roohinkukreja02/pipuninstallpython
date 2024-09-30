@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
+
     /*
     // Handle userType query parameter
     const urlParams = new URLSearchParams(window.location.search);
