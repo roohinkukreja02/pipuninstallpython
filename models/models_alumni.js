@@ -1,6 +1,17 @@
 const mongoose=require("mongoose");
+
 const Schema=mongoose.Schema;
-const alumni_schema= new mongoose.Schema({
+//const alumni_schema= new mongoose.Schema({
+
+//const Schema = mongoose.Schema;
+
+const imageSchema = new Schema({
+    url: String,
+    filename: String
+})
+
+const schema_register= new mongoose.Schema({
+
 
 first_name: {
             required: true,
@@ -31,7 +42,11 @@ email: {
           },
 
 
-phno: {
+
+
+          //required: true,
+
+phone: {
           //required: true,
        
           type: Number,
@@ -48,6 +63,19 @@ city: {
            
             type: String,
           },
+
+images: imageSchema,
+geometry: {
+            type: {
+                type: String,
+                enum: ['Point'],
+                //required: true
+            },
+            coordinates: {
+                type: [Number],
+                //required: true
+            }
+    },
 
 
 
@@ -91,6 +119,14 @@ resume:{
 
 },
 
+password:{
+    
+    //required: true,
+   
+    type: String,
+
+},
+
 students: [{
         type: Schema.Types.ObjectId,
         ref: 'Student'
@@ -109,4 +145,4 @@ requestStudents: [{
 });
 
 
-module.exports = mongoose.model('Alumni', alumni_schema);
+module.exports = mongoose.model('Alumni1', schema_register);

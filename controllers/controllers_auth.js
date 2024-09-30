@@ -55,7 +55,7 @@ const controller_reg_student=async (req,res)=>{
         lastName: body.last_name,
         email: body.email,
         graduationYear: body.grad_year,
-        phone: body.phno,
+        phone: body.phone,
         department: body.department,
         password: body.password,
         
