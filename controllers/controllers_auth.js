@@ -1,6 +1,8 @@
 const models_student=require("../models/models_student");
 const models_alumni=require("../models/models_alumni");
 
+const maptilerClient = require("@maptiler/client");
+maptilerClient.config.apiKey = process.env.MAPTILER_API_KEY;
 
 
 
@@ -14,7 +16,7 @@ const transporter=nodemailer.createTransport({
     }
 });
 
-let current_otp, current_email, current_username;
+let current_otp, current_email, current_role;
 
 //otp generator
 const generateOTP = () => {
@@ -93,9 +95,13 @@ const controller_reg_student=async (req,res)=>{
 const controller_reg_alumni=async (req,res)=>{
     const body=req.body;
     console.log(body);
+    const geoData = await maptilerClient.geocoding.forward(req.body.city, { limit: 1 });
+    
+    
+
     if(body.password===body.confirm_password)
     {
-    return res.send(body);
+    //return res.send(body);
     try{
     const create=await models_alumni.create({
         
@@ -138,7 +144,7 @@ const controller_reg_alumni=async (req,res)=>{
     });
 
     if(create){
-        
+        create.geometry = geoData.features[0].geometry;
         res.json({msg: "created"});
     }
        
@@ -173,7 +179,7 @@ const control_log=async (req,res)=>
                 current_otp=generateOTP();
                 current_email=body.email;
                 current_name=search_one.first_name;
-                
+                current_role=search_one.current_role;
                 console.log(body.email);
     
                 if(body)
@@ -220,8 +226,11 @@ const control_log=async (req,res)=>
             });
             */
             console.log(req.session.user1.email);
-            
-            res.end("worked");
+            if(current_role="alumni")
+            res.end("worked alumni");
+            else
+            res.end("worked student");
+
         }
         else
         res.end("incorrect otp");

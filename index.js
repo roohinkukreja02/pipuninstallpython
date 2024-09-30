@@ -77,9 +77,15 @@ app.use((req, res, next) =>{
 app.use("/", routes_auth);
 // ROUTES
 app.use('/dashboard/:id', alumniRoutes);
-
-
 app.use("/", routes_extras);
+
+app.get('/home', (req,res)=>{
+  res.render('home')
+})
+
+app.get('/user', (req,res)=>{
+  res.render('userP')
+})
 
 app.get('/gallery', (req,res)=>{
   res.render('gallery')

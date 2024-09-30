@@ -508,18 +508,18 @@
                         </li>
                     </ul>
                 </div>
-                <form action="">
+                <form action="/alumni" method="post">
                     <div class="form-one form-step active">
                         <div class="bg-svg"></div>
                         <h2>Personal Information</h2>
                         <p>Enter your personal information correctly</p>
                         <div>
                             <label>First Name</label>
-                            <input type="text" placeholder="e.g. Nitesh">
+                            <input type="text" placeholder="e.g. Nitesh" name="first_name">
                         </div>
                         <div>
                             <label>Last Name</label>
-                            <input type="text" placeholder="e.g. Domal">
+                            <input type="text" placeholder="e.g. Domal" name="last_name">
                         </div>
 
                     </div>
@@ -529,12 +529,12 @@
 
                         <div>
                             <label for="">Phone</label>
-                            <input type="tel" placeholder="+91XXXXXXXXXX">
+                            <input type="tel" placeholder="+91XXXXXXXXXX" name="phone">
                         </div>
 
                         <div>
                             <label for="">City</label>
-                            <input type="text" placeholder="City">
+                            <input type="text" placeholder="City" name="city">
                         </div>
 
 
@@ -544,15 +544,15 @@
                             <h2>Security</h2>
                             <div>
                                 <label>Email</label>
-                                <input type="email" placeholder="Your Email Address">
+                                <input type="email" placeholder="Your Email Address" name="email">
                             </div>
 
                             <div>
                                 <label>Password</label>
-                                <input type="password" placeholder="Enter Password">
+                                <input type="password" placeholder="Enter Password" name="password">
                             </div>
                             <div>
-                                <input type="password" placeholder="Confirm Password">
+                                <input type="password" placeholder="Confirm Password" name="confirm_password">
                             </div>
 
 
@@ -564,7 +564,7 @@
                     <div class="btn-group">
                         <button class="btn-prev" disabled>Back</button>
                         <button class="btn-next">Next Step</button>
-                        <button class="btn-submit">Submit</button>
+                        <button class="btn-submit" type="submit">Submit</button>
                     </div>
                 </form>
             </div>

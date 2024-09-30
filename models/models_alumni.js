@@ -149,4 +149,4 @@ requestStudents: [{
 });
 
 
-module.exports = mongoose.model('Alumni1', schema_register);
+module.exports = mongoose.model('Alumni', schema_register);
