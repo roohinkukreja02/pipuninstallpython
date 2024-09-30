@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Job Dashboard | By Code Info</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f2f5;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .job-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .job-offer {
+        background-color:  #333;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .job-offer:hover {
+        transform: translateY(-5px);
+    }
+
+    .job-title {
+        font-size: 24px;
+        color: #ffffff;
+        margin: 0 0 10px 0;
+    }
+
+    .company-name {
+        font-size: 18px;
+        color: #ffffff;
+        margin: 0 0 10px 0;
+    }
+
+    .job-details {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+    .job-location, .job-type, .job-salary {
+        font-size: 14px;
+        color:#ffffff;
+    }
+
+    .job-description {
+        font-size: 16px;
+        color: #ffffff;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
+    .apply-button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    .apply-button:hover {
+        background-color: #45a049;
+    }
+
+    @media (max-width: 600px) {
+        .job-details {
+            flex-direction: column;
+        }
+
+        .job-location, .job-type, .job-salary {
+            margin-bottom: 5px;
+        }
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="profile.avif" alt="">
+                    <h1>Anuv Jain</h1>
+                </div>
+                <ul>
+                    <li><a href="index.html">
+                            <i class="fas fa-user"></i>
+                            <span class="nav-item">Find Alumni</span>
+                        </a></li>
+                    <li><a href="events.html">
+                            <i class="fas fa-chart-bar"></i>
+                            <span class="nav-item">Events</span>
+                        </a></li>
+                    <li><a href="jobs.html">
+                            <i class="fas fa-tasks"></i>
+                            <span class="nav-item">Jobs Board</span>
+                        </a></li>
+                    
+                    <li><a href="settings.html">
+                            <i class="fas fa-cog"></i>
+                            <span class="nav-item">Settings</span>
+                        </a></li>
+                    <li><a href="help.html">
+                            <i class="fas fa-question-circle"></i>
+                            <span class="nav-item">Help</span>
+                        </a></li>
+                    <li><a href="logout.html" class="logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span class="nav-item">Logout</span>
+                        </a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <section class="main">
+            <div class="main-top">
+                <p>Explore the universe!</p>
+            </div>
+
+            <div class="main-body">
+                <div class="job-container">
+                    <div class="job-offer">
+                        <h2 class="job-title">Senior Frontend Developer</h2>
+                        <h3 class="company-name">TechCorp Solutions</h3>
+                        <div class="job-details">
+                            <span class="job-location">San Francisco, CA</span>
+                            <span class="job-type">Full-time</span>
+                            <span class="job-salary">$120,000 - $150,000</span>
+                        </div>
+                        <p class="job-description">We are seeking an experienced Frontend Developer to join our dynamic team. The ideal candidate will have a strong background in React, TypeScript, and modern web technologies. You'll be responsible for building scalable and performant user interfaces for our enterprise applications.</p>
+                        <button class="apply-button">Apply Now</button>
+                    </div>
+            
+                    <div class="job-offer">
+                        <h2 class="job-title">UX/UI Designer</h2>
+                        <h3 class="company-name">Creative Innovations Inc.</h3>
+                        <div class="job-details">
+                            <span class="job-location">New York, NY</span>
+                            <span class="job-type">Contract</span>
+                            <span class="job-salary">$80,000 - $100,000</span>
+                        </div>
+                        <p class="job-description">We're looking for a talented UX/UI Designer to help create beautiful and intuitive user experiences for our clients. The ideal candidate will have a strong portfolio demonstrating their skills in user-centered design, wireframing, and prototyping. Experience with Figma and Adobe Creative Suite is required.</p>
+                        <button class="apply-button">Apply Now</button>
+                    </div>
+            
+                    <div class="job-offer">
+                        <h2 class="job-title">Full Stack Developer</h2>
+                        <h3 class="company-name">Innovate Technologies</h3>
+                        <div class="job-details">
+                            <span class="job-location">Remote</span>
+                            <span class="job-type">Full-time</span>
+                            <span class="job-salary">$100,000 - $130,000</span>
+                        </div>
+                        <p class="job-description">Join our growing team as a Full Stack Developer and work on cutting-edge projects. We're looking for someone with experience in both frontend and backend technologies, including React, Node.js, and SQL/NoSQL databases. You'll be involved in all stages of the development process, from concept to deployment.</p>
+                        <button class="apply-button">Apply Now</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+    </div>
+    </section>
+    </div>
+
+</body>
+
+</html>

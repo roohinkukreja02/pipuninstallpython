@@ -13,6 +13,9 @@ const methodOverride = require('method-override');
 const session=require("express-session");
 const routes_auth=require("./routes/routes-auth");
 const routes_extras=require("./routes/routes-extras");
+
+const routes_student_dash=require("./routes/routes_student_dash");
+
 const Alumni = require('./models/models_alumni')
 
 const flash = require('connect-flash')
@@ -86,6 +89,7 @@ app.use("/", routes_auth);
 // ROUTES
 app.use('/dashboard/:id', alumniRoutes);
 app.use("/", routes_extras);
+app.use("/", routes_student_dash);
 
 app.get('/home', async(req,res)=>{
   const alumni = await Alumni.find({});
