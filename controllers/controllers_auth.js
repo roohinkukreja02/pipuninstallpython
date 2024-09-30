@@ -95,7 +95,7 @@ const controller_reg_alumni=async (req,res)=>{
     console.log(body);
     if(body.password===body.confirm_password)
     {
-   
+    return res.send(body);
     try{
     const create=await models_alumni.create({
         

@@ -2,8 +2,11 @@ const express=require("express");
 const controller_auth=require("../controllers/controllers_auth");
 //const { control_reg } = require("../controllers/controller-auth");
 const router=express.Router();
+const multer=require("multer");
+const {storage}=require("../cloudinary");
+const upload=multer({storage});
 
-router.post("/alumni",controller_auth.controller_reg_alumni);
+router.post("/alumni",upload.array("image"),controller_auth.controller_reg_alumni);
 
 router.post("/student",controller_auth.controller_reg_student);
 
