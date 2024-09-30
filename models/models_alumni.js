@@ -49,6 +49,48 @@ city: {
             type: String,
           },
 
+
+          
+linkedin:{
+            required: true,
+           
+            type: String,
+},
+
+interests:{
+    required: true,
+   
+    type: String,
+},
+
+company:{
+    required: true,
+   
+    type: String,
+},
+
+domain: {
+    required: true,
+   
+    type: String,
+},
+
+
+achievements: {
+    required: true,
+   
+    type: String,
+},
+
+
+resume:{
+    
+        required: true,
+       
+        type: String,
+
+},
+
 students: [{
         type: Schema.Types.ObjectId,
         ref: 'Student'
