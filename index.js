@@ -3,8 +3,8 @@ const mongoose=require("mongoose");
 const port=6006;
 const app=express();
 const session=require("express-session");
-const routes_auth=require("./routes/routes-auth")
-
+const routes_auth=require("./routes/routes-auth");
+const routes_extras=require("./routes/routes-extras");
 //parsing body and using in functions
 app.use(express.json());
 //allows parsing of more objects, more than key value pairs
@@ -40,6 +40,8 @@ app.use(session({
 
 
 app.use("/", routes_auth);
+
+app.use("/", routes_extras);
 
 app.listen(port, ()=>{
     console.log(`Server started on port ${port}`);
