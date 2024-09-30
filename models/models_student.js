@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const imageSchema = new Schema({
+    url: String,
+    filename: String
+})
+
 const studentSchema = new Schema({
     firstName: String,
     lastName: String,
@@ -23,6 +28,7 @@ const studentSchema = new Schema({
     interests: String,
     techDomain: String,
     achievements: String,
+    images: imageSchema,
     accepted: {
         type: Boolean,
         default: false
