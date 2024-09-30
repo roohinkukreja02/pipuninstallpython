@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Alumni Profile Popup</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e0e0e0;
+        }
+
+        h2, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .popup.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 30px;
+            margin: 5% auto;
+            width: 380px;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+
+        .popup.show .popup-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Header with Image and Name */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .profile-image-container {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #333;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            font-size: 2em;
+            font-weight: bold;
+            color: #222;
+            margin-top: 12px;
+        }
+
+        .profile-domain {
+            font-size: 1.1em;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        /* Details Section */
+        .profile-details {
+            font-size: 1em;
+            color: #555;
+            line-height: 1.8em;
+        }
+
+        .profile-details p {
+            margin-bottom: 15px;
+        }
+
+        strong {
+            color: #000;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 22px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover {
+            color: #333;
+        }
+
+        /* Button Styles */
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        /* Extra Enhancements */
+        .profile-name,
+        .profile-domain,
+        .profile-details p {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .popup.show .profile-name {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .popup.show .profile-domain {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .popup.show .profile-details p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Profile Popup -->
+    <div id="profile-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <div class="profile-header">
+                <div class="profile-image-container">
+                    <img src="https://via.placeholder.com/120" alt="Alumni Photo" class="profile-image">
+                </div>
+                <h2 class="profile-name">John Doe</h2>
+                <p class="profile-domain">Software Engineer, Web Development</p>
+            </div>
+            <div class="profile-details">
+                <p><strong>Year of Graduation:</strong> 2020</p>
+                <p><strong>City:</strong> New York</p>
+                <p><strong>Current Company:</strong> Google</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trigger Button -->
+    <button onclick="openPopup()">View Alumni Profile</button>
+
+    <!-- JavaScript to handle popup open/close -->
+    <script>
+        function openPopup() {
+            const popup = document.getElementById('profile-popup');
+            popup.classList.add('show');
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('profile-popup');
+            popup.classList.remove('show');
+        }
+    </script>
+
+</body>
+</html>

@@ -9,7 +9,7 @@ async function search_alumni(req,res){
     const users = await models_alumni.find({
       first_name: { $regex: searchTerm, $options: 'i' }, // 'i' makes it case-insensitive
     });
-    console.log(req.session.user1.email);
+    //console.log(req.session.user1.email);
     res.json(users); // Send matching users as JSON response
 
   } catch (error) {
