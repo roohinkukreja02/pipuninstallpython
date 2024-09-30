@@ -211,12 +211,14 @@ const control_log=async (req,res)=>
             //req.session.user=body
             req.session.user1={email: current_email};
             console.log(req.session.user1);
+            /*
             req.session.save((err) => {
                 if (err) {
                     console.error("Session save error:", err);
                 }
         
             });
+            */
             console.log(req.session.user1.email);
             
             res.end("worked");
