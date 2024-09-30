@@ -34,6 +34,10 @@ const studentSchema = new Schema({
         type: Boolean,
         default: false
     },
+    currentJob: {
+        type: Schema.Types.ObjectId,
+        ref: 'Job'
+    }
 })
 
 module.exports = mongoose.model('Student', studentSchema)

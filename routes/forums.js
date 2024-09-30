@@ -12,3 +12,5 @@ router.route('/forum/new')
 router.route('/forum/:id')
     .get(forum.showForum)
     .delete(forum.deleteForum)
+
+module.exports = router;

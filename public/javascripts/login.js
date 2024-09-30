@@ -24,12 +24,12 @@ document.addEventListener('DOMContentLoaded', function () {
     //     event.preventDefault();
     //     otpForm.style.display = 'block';
     // });
-
+   /*
     verifyOtpButton.addEventListener('click', function (event) {
         event.preventDefault();
         console.log('OTP verified');
     });
-
+*/
     // Toggle password visibility
     document.querySelectorAll('.toggle-password').forEach(item => {
         item.addEventListener('click', function () {
@@ -46,6 +46,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+
+    /*
     // Handle userType query parameter
     const urlParams = new URLSearchParams(window.location.search);
     const userType = urlParams.get('usertype');
@@ -57,4 +59,5 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         console.log('Unknown user type');
     }
+        */
 });

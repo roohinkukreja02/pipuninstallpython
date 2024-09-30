@@ -13,14 +13,22 @@ const methodOverride = require('method-override');
 const session=require("express-session");
 const routes_auth=require("./routes/routes-auth");
 const routes_extras=require("./routes/routes-extras");
+const Alumni = require('./models/models_alumni')
 
 const flash = require('connect-flash')
 const multer  = require('multer')
 const upload = multer({ dest: 'uploads/' })
 
 const alumniRoutes = require('./routes/alumnidashboard')
+const studentRoutes = require('./routes/studentdashboard')
+const forumRoutes = require('./routes/forums')
+const userRoutes = require('./routes/user')
 
 const MongoStore = require('connect-mongo');
+const { applyJob } = require('./controllers/controllers_student');
+
+
+
 
 app.use(session({
     secret: 'your_secret_key',
@@ -79,8 +87,9 @@ app.use("/", routes_auth);
 app.use('/dashboard/:id', alumniRoutes);
 app.use("/", routes_extras);
 
-app.get('/home', (req,res)=>{
-  res.render('home')
+app.get('/home', async(req,res)=>{
+  const alumni = await Alumni.find({});
+  res.render('home', {alumni})
 })
 
 app.get('/user', (req,res)=>{
