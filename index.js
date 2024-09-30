@@ -19,6 +19,9 @@ const multer  = require('multer')
 const upload = multer({ dest: 'uploads/' })
 
 const alumniRoutes = require('./routes/alumnidashboard')
+const studentRoutes = require('./routes/studentdashboard')
+const forumRoutes = require('./routes/forums')
+const userRoutes = require('./routes/user')
 
 const MongoStore = require('connect-mongo');
 
