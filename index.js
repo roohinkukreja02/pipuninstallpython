@@ -26,6 +26,32 @@ const userRoutes = require('./routes/user')
 
 const MongoStore = require('connect-mongo');
 
+
+//sockets
+const http = require('http');  // To create the server for Socket.IO
+const socketIO = require('socket.io');
+const server = http.createServer(app);  // Create an HTTP server
+const io = socketIO(server); 
+const socketController = require('./controllers/socketController')(io);
+const sharedSession = require('express-socket.io-session');
+
+io.use(sharedSession(session({
+    secret: 'your_secret_key',
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+        mongoUrl: 'mongodb://127.0.0.1:27017/sessionstore'
+    }),
+    cookie: {
+        maxAge: 3600000,  // 1 hour
+        httpOnly: true,
+        secure: false
+    }
+}), {
+    autoSave: true  // This option ensures that sessions are automatically saved with every request
+}));
+
+/*
 app.use(session({
     secret: 'your_secret_key',
     resave: false,
@@ -40,7 +66,7 @@ app.use(session({
     }
 }));
 
-
+*/
 //parsing body and using in functions
 app.use(express.json());
 //allows parsing of more objects, more than key value pairs
@@ -100,6 +126,6 @@ app.get('/gallery/add', (req,res)=>{
   res.render('gallery')
 })
 
-app.listen(port, (req,res)=>{
+server.listen(port, (req,res)=>{
     console.log(`Server started on port ${port}`);
 });
