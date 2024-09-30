@@ -66,6 +66,4 @@ requestStudents: [{
 
 });
 
-const alumni_model= mongoose.model("Alumni", schema_register);
-
-module.exports={alumni_model};
+module.exports = mongoose.model("Alumni", schema_register);
