@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Basic Form with Dropdown</title>
   <style>
     body {
@@ -66,13 +67,18 @@
 <body>
 
   <div class="form-container">
-    <h2>Student Information</h2>
-    <form action="submit-form.php" method="POST">
+    <h2>Alumni Information</h2>
+    <form action="submit-form.php" method="post" novalidate class="needs-validation" enctype="multipart/form-data">
       <label for="first-name">First Name:</label>
       <input type="text" id="first-name" name="first_name" required>
 
       <label for="last-name">Last Name:</label>
       <input type="text" id="last-name" name="last_name" required>
+
+      <div>
+        <label for="imageurl">Image URL: </label>
+        <input class="form-control" type="file" placeholder="Enter image URL" id="imageurl" name="image">
+      </div>
 
       <label for="department">Department:</label>
       <select id="department" name="department" required>
@@ -85,7 +91,7 @@
       </select>
 
       <label for="graduation-year">Graduation Year:</label>
-      <input type="number" id="graduation-year" name="graduation_year" min="2024" required>
+      <input type="number" id="graduation-year" name="graduation_year" min="1990" max="2023" required>
 
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" required>
@@ -93,12 +99,15 @@
       <label for="phone">Phone:</label>
       <input type="text" id="phone" name="phone" required>
 
-      
+      <label for="city">City of Residence:</label>
+      <input type="text" id="city" name="city" required>
 
       <input type="submit" value="Submit">
     </form>
   </div>
 
+
+  
 </body>
 </html>
 
