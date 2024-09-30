@@ -96,6 +96,10 @@ app.get('/user', (req,res)=>{
   res.render('userP')
 })
 
+app.get('/forums', (req,res)=>{
+  res.render('forum')
+})
+
 app.get('/gallery', (req,res)=>{
   res.render('gallery')
 })
