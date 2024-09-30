@@ -15,7 +15,7 @@ app.use(express.static('public'));
 app.set("view engine", "ejs");
 
 //mongoDB connection
-mongoose.connect("mongodb://127.0.0.1:27017/myproject")
+mongoose.connect("mongodb://127.0.0.1:27017/codeissance")
 .then(console.log("MongoDB connected"))
 .catch((err)=>{console.log(err)});
 
