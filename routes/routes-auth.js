@@ -11,4 +11,16 @@ router.post("/login", controller_auth.control_log)
 
 router.post("/verifyOTP", controller_auth.verify_otp);
 
+router.get("/userP", (req,res)=>{
+    res.render("userP");
+})
+
+router.get("/alumni", (req,res)=>{
+    res.render("alumni");
+})
+
+router.get("/student", (req,res)=>{
+    res.render("student");
+})
+
 module.exports=router;
