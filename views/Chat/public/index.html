@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>WebSockets</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale = 1.0, user-scalable=no, viewport-fit=cover">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link href="./style.css" rel="stylesheet"/>
+</head>
+<body>
+    <div>
+
+        
+    </div>
+<div id="mario-chat" style=" border: 2px solid rgba(0, 0, 0, 0.26); background-color: black; color: aliceblue;">
+    <h2 style="text-align: center; font-size: 3em;">Chat Box</h2>
+    <div id="chat-window">
+        <div id="output" style="color: black;"></div>
+        <div id="feedback"></div>
+    </div>
+    <input id="handle" type="text" placeholder="Name" style="margin: 10px;"/>
+    <input id="message" type="text" placeholder="Message"/>
+    <button id="send" style="background-color: rgba(128, 128, 128, 0.692);">Send</button>
+</div>
+</body>
+<script type="text/javascript" src="./chat.js"></script>
+</html>
