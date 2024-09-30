@@ -35,10 +35,8 @@ module.exports.edit = async(req,res)=>{
 
 module.exports.dashboard = async(req,res)=>{
     const {id} = req.params;
-    //const alumni = await Alumni.findById(id).populate('students');
-    console.log(req.session.user1);
-    //res.render(`dashboard/${id}`, {alumni})
-    res.send(req.session.user1)
+    const student = await Student.findById(id).populate('mentors').populate('currentJob');
+    res.render(`dashboard/${id}`, {student})
 }
 
 module.exports.findMentors = async(req,res)=>{

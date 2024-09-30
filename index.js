@@ -84,7 +84,9 @@ app.use((req, res, next) =>{
 
 app.use("/", routes_auth);
 // ROUTES
-app.use('/dashboard/:id', alumniRoutes);
+app.use('/alumnidashboard/:id', alumniRoutes);
+app.use('/studentdashboard/:id', studentRoutes);
+
 app.use("/", routes_extras);
 
 app.get('/home', async(req,res)=>{

@@ -10,7 +10,7 @@ const mongoose = require("mongoose");
 
 module.exports.renderEdit = async(req,res)=>{
     const {id} = req.params;
-    const alumni = await Alumni.findById(id);
+    const alumni = await Alumni.findById(id).populate('students').populate('requestStudents');
     res.render(`dashboard/${id}/edit`, {alumni})
 }
 
