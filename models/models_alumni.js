@@ -126,6 +126,10 @@ password:{
     type: String,
 
 },
+role: {
+    type: String,
+    default: 'alumni'
+},
 
 students: [{
         type: Schema.Types.ObjectId,
