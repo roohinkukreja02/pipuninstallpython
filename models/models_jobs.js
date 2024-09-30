@@ -9,6 +9,10 @@ const jobSchema = new Schema({
     author: {
         type: Schema.Types.ObjectId,
         ref: 'Alumni'
+    },
+    candidates: {
+        type: Schema.Types.ObjectId,
+        ref: 'Student'
     }
 })
 

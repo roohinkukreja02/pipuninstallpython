@@ -1,6 +1,8 @@
 const models_student=require("../models/models_student");
 const models_alumni=require("../models/models_alumni");
 
+const maptilerClient = require("@maptiler/client");
+maptilerClient.config.apiKey = process.env.MAPTILER_API_KEY;
 
 
 
@@ -93,6 +95,10 @@ const controller_reg_student=async (req,res)=>{
 const controller_reg_alumni=async (req,res)=>{
     const body=req.body;
     console.log(body);
+    const geoData = await maptilerClient.geocoding.forward(req.body.city, { limit: 1 });
+    
+    
+
     if(body.password===body.confirm_password)
     {
     //return res.send(body);
@@ -138,7 +144,7 @@ const controller_reg_alumni=async (req,res)=>{
     });
 
     if(create){
-        
+        create.geometry = geoData.features[0].geometry;
         res.json({msg: "created"});
     }
        
