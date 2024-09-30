@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Job Dashboard | By Code Info</title>
+    <link rel="stylesheet" href="/stylesheets/style1.css" />
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+
+<body>
+    <div>
+    <div class="container">
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="profile.avif" alt="">
+                    <h1>Anuv Jain</h1>
+                </div>
+                <ul>
+                    <li><a href="index.html">
+                            <i class="fas fa-user"></i>
+                            <span class="nav-item">Find Alumni</span>
+                        </a></li>
+                    <li><a href="events.html">
+                            <i class="fas fa-chart-bar"></i>
+                            <span class="nav-item">Events</span>
+                        </a></li>
+                    <li><a href="jobs.html">
+                            <i class="fas fa-tasks"></i>
+                            <span class="nav-item">Jobs Board</span>
+                        </a></li>
+                    
+                    <li><a href="settings.html">
+                            <i class="fas fa-cog"></i>
+                            <span class="nav-item">Settings</span>
+                        </a></li>
+                    <li><a href="help.html">
+                            <i class="fas fa-question-circle"></i>
+                            <span class="nav-item">Help</span>
+                        </a></li>
+                    <li><a href="logout.html" class="logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span class="nav-item">Logout</span>
+                        </a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <section class="main">
+            <div class="main-top">
+                <p>Explore the universe!</p>
+            </div>
+            
+            <div class="main-body">
+                <h1>FIND ALUMNI</h1>
+                <div>
+                    <form>
+                        <div class="search_bar" >
+
+                            <input type="search" placeholder="Enter first name...">
+                            <button id="Find">Search</button>
+                    </form>
+                </div>
+                <div style="display: flex; flex-direction: row; justify-content: space-between; gap: 50px;">
+                    <form>
+                        <select name="Domain..." id="" style="height: 30px; margin-left: 15px; border-radius: 15px; padding: 5px;">
+                            <option value="" disabled selected>Select a domain</option>
+
+                            <option value="Web Design">Web Design</option>
+                            <option value="App Design">App Design</option>
+                            <option value="App Development">App Development</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="UI/UX Design">UI/UX Design</option>
+                            <option value="Data Science">Data Science</option>
+                            <option value="Machine Learning">Machine Learning</option>
+                            <option value="Artificial Intelligence">Artificial Intelligence</option>
+                            <option value="Mobile Development">Mobile Development</option>
+                            <option value="Cloud Computing">Cloud Computing</option>
+                            <option value="Software Engineering">Software Engineering</option>
+                            <option value="Game Development">Game Development</option>
+                            <option value="Cybersecurity">Cybersecurity</option>
+                            <option value="Digital Marketing">Digital Marketing</option>
+                            <option value="Content Creation">Content Creation</option>
+                            <option value="SEO">SEO</option>
+                            <option value="E-commerce Development">E-commerce Development</option>
+
+                        </select>
+                        <select class="filter" style="height: 30px; margin-left: 15px; border-radius: 15px; padding: 5px;">
+                            <option value="" disabled selected>Find city</option>
+
+                            <option value="Thane">Thane</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Navi Mumbai">Navi Mumbai</option>
+                            <option value="Kalyan">Kalyan</option>
+                            <option value="Dombivli">Dombivli</option>
+                            <option value="Vasai">Vasai</option>
+                            <option value="Virar">Virar</option>
+                            <option value="Bhiwandi">Bhiwandi</option>
+                            <option value="Ulhasnagar">Ulhasnagar</option>
+                            <option value="Ambarnath">Ambarnath</option>
+                            <option value="Badlapur">Badlapur</option>
+                            <option value="Palghar">Palghar</option>
+                            <option value="Mira-Bhayandar">Mira-Bhayandar</option>
+                            <option value="Mahape">Mahape</option>
+
+                        </select>
+                        <select class="Year" style="height: 30px; margin-left: 15px; border-radius: 15px; padding: 5px;">
+                            <option value="" disabled selected>Graduation year</option>
+                            <option>2023</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                            <option value="2014">2014</option>
+                            <option value="2013">2013</option>
+                            <option value="2012">2012</option>
+                            <option value="2011">2011</option>
+                            <option value="2010">2010</option>
+                            <option value="2009">2009</option>
+                            <option value="2008">2008</option>
+                            <option value="2007">2007</option>
+                            <option value="2006">2006</option>
+                            <option value="2005">2005</option>
+                            <option value="2004">2004</option>
+                            <option value="2003">2003</option>
+                            <option value="2002">2002</option>
+                            <option value="2001">2001</option>
+                            <option value="2000">2000</option>
+
+
+                        </select>
+                        <button id="Find">Find</button>
+                </form>
+            </div>
+
+
+            <div class="row">
+                <p>There are more than <span>400</span> Jobs</p>
+                <a href="#">See all</a>
+            </div>
+
+            <div class="job_card">
+                <div class="job_details">
+                    <div class="img">
+                        <i class="fas fa-user"></i> <!-- Profile icon -->
+                    </div>
+                    <div class="text">
+                        <h2 style="color: rgb(253, 254, 255);">Anuj Jain</h2>
+                        <span>Google Drive - Junior Post</span>
+                        <span>UX Designer</span>
+                    </div>
+                </div>
+                <div class="job_salary">
+                    <button id="Find">Chat Request</button>
+
+                </div>
+            </div>
+
+            <div class="job_card">
+                <div class="job_details">
+                    <div class="img">
+                        <i class="fas fa-user"></i> <!-- Profile icon -->
+                    </div>
+                    <div class="text">
+                        <h2 style="color: rgb(253, 254, 255);">Swara Patil</h2>
+                        <span>JavaScript Developer</span>
+                        <span>Google - Senior Post</span>
+                    </div>
+                </div>
+                <div class="job_salary">
+                    <button id="Find">Chat Request</button>
+                </div>
+            </div>
+
+
+
+    </div>
+    </section>
+    </div>
+
+</body>
+
+</html>

@@ -35,7 +35,7 @@ async function sort_alumni(req,res){
   }
 
   try {
-    const users = await models_alumni.find(sortFilter).sort({ city: 1, domain: 1, grad_year });
+    const users = await models_alumni.find(sortFilter).sort({ city: 1, domain: 1, grad_year:1 });
      // Adjust sorting criteria as needed
     res.json(users);
   } catch (error) {

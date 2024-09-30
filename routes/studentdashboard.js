@@ -6,24 +6,27 @@ const multer  = require('multer')
 const {storage} = require('../cloudinary')
 const upload = multer({ storage })
 
-// router.route('/')
-//     .get(alumni.dashboard)
+router.route('/')
+    .get(student.dashboard)
 
-// router.route('/requests')
-//     .get(alumni.requestPage)
-//     .post(alumni.studentRequests)
+router.route('/requests')
+    .get(student.findMentors)
 
-// router.route('/event')
-//     .get(alumni.addEvent)
-//     .delete(alumni.removeEvent)
+router.route('/requests')
+    .post(student.RequestMentor)
 
-// router.route('/job')
-//     .get(alumni.addJob)
-//     .delete(alumni.removeJob)
+router.route('/event')
+    .get(student.addEvent)
+    
+router.route('/event/:eventId')
+    .delete(student.removeEvent)
 
-// router.route('/edit')
-//     .get(alumni.renderEdit)
-//     .put(alumni.edit)
+router.route('/job/:jobId')
+    .post(student.applyJob)
+
+router.route('/edit')
+    .get(student.renderEdit)
+    .put(student.edit)
 
 
-// module.exports = router;
+module.exports = router;
