@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.2.0/swiper-bundle.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.2.0/swiper-bundle.min.js"></script>
+
+    <script crossorigin="anonymous" src="https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.umd.min.js"></script>
+    <link crossorigin="anonymous" href="https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.css" rel="stylesheet">
+    
+    
+
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/events.css">
+    <link rel="stylesheet" href="/stylesheets/testionials.css">
+    <link rel="stylesheet" href="/stylesheets/contact.css">
+
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h2>TSEC-Connect</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#Events">Events</a></li>
+                <li><a href="#Testimonials">Testimonial</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li>                     </li>
+                <li style="margin-left: 600px;"><a href="/forum">Visit Forums</a></li>
+
+            </ul>
+            <ul>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <!--<input type="text" placeholder="Search...">-->
+            <a href="/user"><button class="login">Get Started</button></a>
+
+        </div>
+    </header>
+    <h2 class="cllg_name">THADOMAL SHAHANI ENGINEERING COLLEGE</h2>
+    <div id="app">
+        <!-- Food slider container -->
+        <div class="food-slider">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <!-- configure slide color with "data-slide-bg-color" attribute -->
+                    <div class="swiper-slide" data-swiper-autoplay="2000">
+                        <!-- slide image wrap -->
+                        <div class="food-slider-scale hero-img ">
+                            <!-- slide image -->
+                            <img src="/tsec.jpg" alt="Caviar-Express">
+                        </div>
+                    </div>
+                    <!-- configure slide color with "data-slide-bg-color" attribute -->
+                    <div class="swiper-slide" data-swiper-autoplay="2000">
+                        <!-- slide image wrap -->
+                        <div class="food-slider-scale hero-img">
+                            <!-- slide image -->
+                            <img src="/facultys-1024x497.jpg" alt="Blue-Berry">
+                        </div>
+                    </div>
+                    <!-- configure slide color with "data-slide-bg-color" attribute -->
+                    <div class="swiper-slide" data-swiper-autoplay="2000">
+                        <!-- slide image wrap -->
+                        <div class="food-slider-scale hero-img">
+                            <!-- slide image -->
+                            <img src="/branches.jpg" alt="Beef-Steak">
+                        </div>
+                    </div>
+                    <!-- configure slide color with "data-slide-bg-color" attribute -->
+                    <div class="swiper-slide" data-swiper-autoplay="2000">
+                        <!-- slide image wrap -->
+                        <div class="food-slider-scale hero-img">
+                            <!-- slide image -->
+                            <img src="/lab.jpg" alt="Strawberry-Finx">
+                        </div>
+                    </div>
+                </div>
+                <!-- right/next navigation button -->
+                <div class="food-slider-button-prev food-slider-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 350 160 90">
+                        <g class="food-slider-svg-wrap">
+                            <g class="food-slider-svg-circle-wrap">
+                                <circle cx="42" cy="42" r="40"></circle>
+                            </g>
+                            <path class="food-slider-svg-arrow"
+                                d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z">
+                            </path>
+                            <path class="food-slider-svg-line" d="M80,0H0"></path>
+                        </g>
+                    </svg>
+                </div>
+                <!-- left/previous navigation button -->
+                <div class="food-slider-button-next food-slider-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 350 160 90">
+                        <g class="food-slider-svg-wrap">
+                            <g class="food-slider-svg-circle-wrap">
+                                <circle cx="42" cy="42" r="40"></circle>
+                            </g>
+                            <path class="food-slider-svg-arrow"
+                                d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z">
+                            </path>
+                            <path class="food-slider-svg-line" d="M80,0H0"></path>
+                        </g>
+                    </svg>
+                </div>
+                <!-- Pagination -->
+
+                <div class="autoplay-progress" style="display: none;">
+                    <svg viewBox="0 0 48 48">
+                        <circle cx="24" cy="24" r="20"></circle>
+                    </svg>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container2" id="about">
+        <h2 class="Section-2-title">About TSEC</h2>
+        <div class="AboutUs">
+            <div class="AboutUs_img">
+                <img src="Thampi.jpg" alt="">
+                <h2>Principal: Dr. G.T. Thampi</h2>
+            </div>
+            <div class="info">
+                <div class="cllg_info">
+                    Thadomal Shahani Engineering College (TSEC) is a premier engineering institution in Mumbai,
+                    established in 1983. It offers undergraduate and postgraduate programs across various engineering
+                    disciplines, known for its academic excellence and vibrant campus life. TSEC is affiliated with the
+                    University of Mumbai and is recognized for fostering innovation and technical expertise among
+                    students.
+                </div>
+                <div class="About_principal">
+                    Dr. G. T. Thampi, the principal of TSEC, is a well-respected academician and leader in the field of
+                    engineering education. He is known for his emphasis on holistic student development, combining
+                    technical knowledge with soft skills, ethics, and social responsibility. Under his leadership, TSEC
+                    has grown in academic stature and community engagement.
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- map -->
+ <div id="map" style="height: 850px; width: 60%;"></div>
+
+    <hr style="margin-top: 200px;">
+    <div class="Section-3" id="Events">
+        <h2 class="UpcomingEvents">UPCOMING EVENTS</h2>
+        <div class="section">
+            <div class="video-visual">
+                <video class="video" autoplay loop muted poster="" role="none"
+                    aria-label="background gradient animation">
+                    <source
+                        src="https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/dynamic-content-lockups-v2/assets/bg-gradient-animation.mp4"
+                        type="video/mp4" />
+                </video>
+            </div>
+            <div class="section-wrapper">
+                <div class="content-wrapper">
+                    <div class="content content-1">
+                        <div class="mobile-visual">
+                            <img class="card-img"
+                                src="/codeissance.jpg"
+                                alt="Fantasy warrior  - Video game character" />
+                        </div>
+                        <div class="meta">
+                            <h2 class="headline">Codesiaance:
+                                <span class="text-highlight">Codestorm Hackathon</span>
+                            </h2>
+                            <p class="desc">
+                                The Premier Hackathon by Codestorm Committee Codesiaance is an innovative hackathon
+                                organized by TSEC's Codestorm Committee, bringing together tech enthusiasts to solve
+                                real-world challenges. Participants engage in collaborative problem-solving, showcasing
+                                their coding prowess and creativity through cutting-edge projects.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="content content-2">
+                        <div class="mobile-visual">
+                            <img class="card-img"
+                                src="https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/dynamic-content-lockups-v2/assets/img-2.avif"
+                                alt="Green haired ninja in armor - Video game character" />
+                        </div>
+                        <div class="meta">
+                            <h2 class="headline">
+                                Shazam:
+                                <span class="text-highlight">Sporting Extravaganza</span>
+                            </h2>
+                            <p class="desc">
+                                TSEC's Ultimate Multi-Sporting Extravaganza Shazam is a thrilling multiple sporting
+                                event conducted by the TSEC Student Council. It features a wide array of competitive
+                                sports, promoting camaraderie and sportsmanship among students while fostering a vibrant
+                                campus spirit.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="content content-3">
+                        <div class="mobile-visual">
+                            <img class="card-img"
+                                src="https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/dynamic-content-lockups-v2/assets/img-3.avif"
+                                alt="Female warrior in armor - Video game character" />
+                        </div>
+                        <div class="meta">
+                            <h2 class="headline">
+                                NFC:
+                                <span class="text-highlight">CodeTantra's Coding Challenge</span>
+                            </h2>
+                            <p class="desc">
+                                A Dynamic Hackathon by CodeTantra Need for Code (NFC) is a fast-paced hackathon powered
+                                by CodeTantra, providing a platform for coders to demonstrate their programming skills.
+                                The event focuses on innovative software solutions, encouraging participants to push the
+                                boundaries of their technical expertise.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="content content-4">
+                        <div class="mobile-visual">
+                            <img class="card-img"
+                                src="https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/dynamic-content-lockups-v2/assets/img-4.avif"
+                                alt="Agile warrior - Video game character" />
+                        </div>
+                        <div class="meta">
+                            <h2 class="headline">
+                                TSEC Hacks: <span class="text-highlight">Innovation Marathon</span>
+                            </h2>
+                            <p class="desc">
+                                A Tech Innovation Marathon by Codecell Organized by the Codecell Committee of TSEC, TSEC
+                                Hacks is a 24-hour hackathon that challenges participants to create innovative software
+                                solutions. This event fosters creativity, teamwork, and the application of emerging
+                                technologies to address modern challenges
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="visual">
+                    <div class="card-wrapper">
+                        <div class="card card-1">
+                            <img class="card-img" src="/codeissance.jpg" alt="Fantasy warrior  - Video game character" />
+                        </div>
+                        <div class="card card-2">
+                            <img class="card-img" src="/shazam.jpg"
+                                alt="Green haired ninja in armor - Video game character" />
+                        </div>
+                        <div class="card card-3">
+                            <img class="card-img" src="/NFC.jpg" alt="Female warrior in armor - Video game character" />
+                        </div>
+                        <div class="card card-4">
+                            <img class="card-img" src="/tsec_hacks.jpeg" alt="Agile warrior - Video game character" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="Testimonials" id="Testimonials">
+        <section class="testimonials">
+            <div class="container">
+                <div class="title">
+                    <h1>Testimonials</h1>
+                </div>
+
+                <div class="slider-indicator">
+                    <img src="/images/testimonial-01.png" class="active" alt="img" data-id="0">
+                    <img src="/images/testimonial-02.png" alt="img" data-id="1">
+                    <img src="/images/testimonial-03.png" alt="img" data-id="2">
+                </div>
+
+                <div class="slider">
+                    <div class="slide active">
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti soluta asperiores magni
+                            voluptatem iste consequuntur reiciendis quas velit veritatis animi, ducimus iusto ad sint
+                            similique sapiente, suscipit ab, rerum voluptatum. Quaerat ad eveniet architecto, quidem
+                            tempora error magnam! At nisi qui ratione, tempora vel corporis sint exercitationem maxime
+                            minima velit!
+                        </p>
+                        <div class="client-info">
+                            <h3>Elisa</h3>
+                            <span>Founder at Zach</span>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti soluta asperiores magni
+                            voluptatem iste consequuntur reiciendis quas velit veritatis animi, ducimus iusto ad sint
+                            similique sapiente, suscipit ab, rerum voluptatum. Quaerat ad eveniet architecto, quidem
+                            tempora error magnam! At nisi qui ratione, tempora vel corporis sint exercitationem maxime
+                            minima velit!
+                        </p>
+                        <div class="client-info">
+                            <h3>Natasha</h3>
+                            <span>Founder at Welling</span>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti soluta asperiores magni
+                            voluptatem iste consequuntur reiciendis quas velit veritatis animi, ducimus iusto ad sint
+                            similique sapiente, suscipit ab, rerum voluptatum. Quaerat ad eveniet architecto, quidem
+                            tempora error magnam! At nisi qui ratione, tempora vel corporis sint exercitationem maxime
+                            minima velit!
+                        </p>
+                        <div class="client-info">
+                            <h3>Jack</h3>
+                            <span>Founder at Zim</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+    <hr>
+    <div class="Contact" id="contact">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <form class="contact-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your email" required>
+                
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-links">
+            <a href="#about">About Us</a>
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="social-media">
+            <a href="#facebook">Facebook</a>
+            <a href="#instagram">Instagram</a>
+            <a href="#twitter">Twitter</a>
+        </div>
+    </footer>
+</body>
+<script src="/javascripts/script.js"></script>
+<script src="/javascripts/testimonial.js"></script>
+
+<script>
+    const maptilerApiKey = '<%- process.env.MAPTILER_API_KEY %>';
+    const alumni = { features: <%- JSON.stringify(alumni) %>}
+</script>
+
+<script src="/javascripts/clusterMap.js"></script>
+
+
+</html>

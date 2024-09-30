@@ -1,4 +1,6 @@
 const mongoose=require("mongoose");
+const opts = { toJSON: {virtuals: true}};
+
 
 const Schema=mongoose.Schema;
 //const alumni_schema= new mongoose.Schema({
@@ -126,6 +128,10 @@ password:{
     type: String,
 
 },
+role: {
+    type: String,
+    default: 'alumni'
+},
 
 students: [{
         type: Schema.Types.ObjectId,
@@ -142,7 +148,19 @@ requestStudents: [{
 
 
 
-});
+}, opts);
+
+schema_register.virtual('properties.popUp').get(function(){
+    return `<h3>
+                <b>
+                ${this.first_name} ${this.last_name}
+                </b>    
+            </h3>
+            <hr>
+            <p>
+                ${this.city}...
+            </p>`
+})
 
 
-module.exports = mongoose.model('Alumni1', schema_register);
+module.exports = mongoose.model('Alumni', schema_register);

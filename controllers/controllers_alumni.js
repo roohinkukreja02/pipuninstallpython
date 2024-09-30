@@ -15,9 +15,9 @@ module.exports.renderEdit = async(req,res)=>{
 }
 
 module.exports.edit = async(req,res)=>{
-    const geoData = await maptilerClient.geocoding.forward(req.body.alumni.city, { limit: 1 });
+    const geoData = await maptilerClient.geocoding.forward(req.body.city, { limit: 1 });
     const {id} = req.params;
-    const alumni = await Alumni.findByIdAndUpdate(id,{...req.body.alumni});
+    const alumni = await Alumni.findByIdAndUpdate(id,{...req.body});
     alumni.geometry = geoData.features[0].geometry;
     const imgs = req.files.map(f => ({url: f.path, filename: f.filename}));
     alumni.image.push(...imgs);
@@ -37,7 +37,7 @@ module.exports.edit = async(req,res)=>{
 
 module.exports.dashboard = async(req,res)=>{
     const {id} = req.params;
-    const alumni = await Alumni.findById(id).populate('students');
+    //const alumni = await Alumni.findById(id).populate('students');
     console.log(req.session.user1);
     //res.render(`dashboard/${id}`, {alumni})
     res.send(req.session.user1)
