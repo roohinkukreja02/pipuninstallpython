@@ -30,7 +30,7 @@ const seedDB = async()=>{
             last_name: `${temp(lastname)}`,
             email: `${Math.floor(Math.random() * 1000)}${Math.floor(Math.random() * 1000)}@xxx`,
             department: `${deps[Math.floor(Math.random() * 5)]}`,
-            grad_year: `${[Math.floor(Math.random() * 1990 + Math.floor(Math.random()*33))]}`,
+            grad_year: `${[Math.floor(Math.random() * (2023 - 1990 + 1)) + 1990]}`,
             domain:`${domains[Math.floor(Math.random() * 17)]}`,
             // images: [
             //     {
