@@ -20,7 +20,6 @@ nav ul {
 }
 
 nav ul li {
-	font-size: x-large;
     margin-left: 20px;
 }
 
@@ -403,7 +402,7 @@ body {
 }
 .AboutUs_img h2{
     font-size: 40px;
-    margin-top: -15px;
+    margin-top: 15px;
     text-align: center;
     color: #343148ff;
    -webkit-text-stroke: 2px #000000;
@@ -417,21 +416,23 @@ body {
     flex-direction: column;
     gap: 60px;
 }
-footer {
-    background: #000;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-    border-top: 2px solid #444;
+.arrow {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
 }
 
-footer .footer-links a, footer .social-media a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
+#prevTestimonial {
+    left: 10px;
 }
 
-footer .footer-links a:hover, footer .social-media a:hover {
-    color: #e8491d;
+#nextTestimonial {
+    right: 10px;
 }
+

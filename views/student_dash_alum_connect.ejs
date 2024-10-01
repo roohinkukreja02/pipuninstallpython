@@ -14,24 +14,24 @@
         <nav>
             <div class="navbar">
                 <div class="logo">
-                    <img src="profile.avif" alt="">
-                    <h1>Anuv Jain</h1>
+                    <img src="/profile.avif" alt="">
+                    <h1><%= student.firstName %> <%= student.lastName %></h1>
                 </div>
                 <ul>
-                    <li><a href="index.html">
+                    <li><a href="/studentdashboard/<%= student._id%>/requests">
                             <i class="fas fa-user"></i>
                             <span class="nav-item">Find Alumni</span>
                         </a></li>
-                    <li><a href="events.html">
+                    <li><a href="/studentdashboard/<%= student._id%>/event">
                             <i class="fas fa-chart-bar"></i>
                             <span class="nav-item">Events</span>
                         </a></li>
-                    <li><a href="jobs.html">
+                    <li><a href="/studentdashboard/<%= student._id%>/job">
                             <i class="fas fa-tasks"></i>
                             <span class="nav-item">Jobs Board</span>
                         </a></li>
                     
-                    <li><a href="settings.html">
+                    <li><a href="/studentdashboard/<%= student._id%>/edit">
                             <i class="fas fa-cog"></i>
                             <span class="nav-item">Settings</span>
                         </a></li>
@@ -55,7 +55,7 @@
             <div class="main-body">
                 <h1>FIND ALUMNI</h1>
                 <div>
-                    <form action="/search" method="get">
+                    <form action="/studentdashboard/<%= student._id%>/requests/search" method="get">
                         <div class="search_bar" >
 
                             <input type="search" placeholder="Enter first name..." name="query">
@@ -63,7 +63,7 @@
                     </form>
                 </div>
                 <div style="display: flex; flex-direction: row; justify-content: space-between; gap: 50px;">
-                    <form action="/sort" method="get">
+                    <form action="/studentdashboard/<%= student._id%>/requests/sort" method="get">
                         <select name="Domain..." id="" style="height: 30px; margin-left: 15px; border-radius: 15px; padding: 5px;" name="domain">
                             <option value="" name="domain" disabled selected>Select a domain</option>
 
@@ -175,9 +175,17 @@
                         <span><%= alumni.interests%></span>
                     </div>
                 </div>
-                <div class="job_salary">
-                    <button id="Find">Chat Request</button>
-                </div>
+                <form action="/studentdashboard/<%= student._id%>/requests/<%= alumni._id%>" method="post">
+                    <% if(alumni.requestStudents.length === 0) {%>
+                    <div class="job_salary">
+                        <button id="Find">Chat Request</button>
+                    </div>
+                    <% } else { %>
+                        <div class="job_salary">
+                            <button disabled>Request Send</button>
+                        </div>
+                    <% } %>
+                </form>
             </div>
             <% }); %>
 

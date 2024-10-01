@@ -21,6 +21,8 @@ const Alumni = require('./models/models_alumni')
 const flash = require('connect-flash')
 const multer  = require('multer')
 const upload = multer({ dest: 'uploads/' })
+app.use(methodOverride('_method'));
+
 
 const alumniRoutes = require('./routes/alumnidashboard')
 const studentRoutes = require('./routes/studentdashboard')
@@ -90,12 +92,11 @@ app.use((req, res, next) =>{
 app.use("/", routes_auth);
 // ROUTES
 app.use('/alumnidashboard/:id', alumniRoutes);
-//app.use('/studentdashboard/:id', studentRoutes);
-
-app.use("/", routes_extras);
+app.use('/studentdashboard/:id', studentRoutes);
+app.use('/', routes_extras);
 //app.use("/", routes_student_dash);
 
-app.use("/", sturoutes);
+app.use("/studentdashboard/:id", sturoutes);
 
 app.get('/home', async(req,res)=>{
   const alumni = await Alumni.find({});

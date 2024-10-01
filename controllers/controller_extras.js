@@ -1,9 +1,13 @@
 const models_alumni=require("../models/models_alumni");
+const Student=require("../models/models_student");
+
 
 
 async function search_alumni(req, res) {
     // Extract the search term string
+    const {id} = req.params;
     const searchTerm = req.query.query;
+    const student = await Student.findById(id)
 
     try {
         // Ensure the searchTerm is a valid string
@@ -17,7 +21,7 @@ async function search_alumni(req, res) {
         });
 
         // Return the matching users as a JSON response
-        res.render("student_dash_alum_connect", {alumni});
+        res.render("student_dash_alum_connect", {alumni, student});
 
     } catch (error) {
         console.error(error);
@@ -53,6 +57,9 @@ async function sort_alumni(req,res){
 }
 */
 async function sort_alumni(req, res) {
+  const {id} = req.params;
+  const student = await Student.findById(id)
+  
     console.log("control reached");
     const { city, domain, grad_year } = req.query;
     console.log(grad_year);
@@ -73,7 +80,7 @@ async function sort_alumni(req, res) {
         const alumni = await models_alumni.find(filter).sort({ city: 1, domain: 1, grad_year: 1 });
         
         // Render only when the fields match
-        res.render("student_dash_alum_connect", { alumni });
+        res.render("student_dash_alum_connect", { alumni,student });
     } catch (error) {
         console.error(error);
         res.status(500).send('Error occurred during sorting');
