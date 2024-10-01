@@ -31,7 +31,7 @@
                             <span class="nav-item">Jobs Board</span>
                         </a></li>
                     
-                    <li><a href="settings.html">
+                    <li><a href="/studentdashboard/<%= student._id%>/edit">
                             <i class="fas fa-cog"></i>
                             <span class="nav-item">Settings</span>
                         </a></li>
@@ -175,9 +175,17 @@
                         <span><%= alumni.interests%></span>
                     </div>
                 </div>
-                <div class="job_salary">
-                    <button id="Find">Chat Request</button>
-                </div>
+                <form action="/studentdashboard/<%= student._id%>/requests/<%= alumni._id%>" method="post">
+                    <% if(alumni.requestStudents.length === 0) {%>
+                    <div class="job_salary">
+                        <button id="Find">Chat Request</button>
+                    </div>
+                    <% } else { %>
+                        <div class="job_salary">
+                            <button disabled>Request Send</button>
+                        </div>
+                    <% } %>
+                </form>
             </div>
             <% }); %>
 

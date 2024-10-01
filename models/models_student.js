@@ -28,9 +28,7 @@ const studentSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Alumni1'
     }],
-    url: [{
-        type: String
-    }],
+    url: String,
     committee: String,
     interests: String,
     techDomain: String,

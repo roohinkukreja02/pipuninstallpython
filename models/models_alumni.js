@@ -137,6 +137,10 @@ students: [{
         type: Schema.Types.ObjectId,
         ref: 'Student'
     }],
+jobs: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Job'
+}],
 requestStudents: [{
     type: Schema.Types.ObjectId,
     ref: 'Student'

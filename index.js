@@ -21,6 +21,8 @@ const Alumni = require('./models/models_alumni')
 const flash = require('connect-flash')
 const multer  = require('multer')
 const upload = multer({ dest: 'uploads/' })
+app.use(methodOverride('_method'));
+
 
 const alumniRoutes = require('./routes/alumnidashboard')
 const studentRoutes = require('./routes/studentdashboard')

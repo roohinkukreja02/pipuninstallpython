@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router({mergeParams: true});
 const student = require('../controllers/controllers_student')
+const methodOverride = require('method-override');
+
 
 const multer  = require('multer')
 const {storage} = require('../cloudinary')
@@ -12,7 +14,7 @@ router.route('/')
 router.route('/requests')
     .get(student.findMentors)
 
-router.route('/requests')
+router.route('/requests/:alumniId')
     .post(student.RequestMentor)
 
 router.route('/event')

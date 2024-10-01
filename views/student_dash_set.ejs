@@ -84,24 +84,24 @@
         <nav>
             <div class="navbar">
                 <div class="logo">
-                    <img src="profile.avif" alt="">
-                    <h1>Anuv Jain</h1>
+                    <img src="/profile.avif" alt="">
+                    <h1><%= student.firstName %> <%= student.lastName %></h1>
                 </div>
                 <ul>
-                    <li><a href="index.html">
+                    <li><a href="/studentdashboard/<%= student._id%>/requests">
                             <i class="fas fa-user"></i>
                             <span class="nav-item">Find Alumni</span>
                         </a></li>
-                    <li><a href="events.html">
+                    <li><a href="/studentdashboard/<%= student._id%>/event">
                             <i class="fas fa-chart-bar"></i>
                             <span class="nav-item">Events</span>
                         </a></li>
-                    <li><a href="jobs.html">
+                    <li><a href="/studentdashboard/<%= student._id%>/job">
                             <i class="fas fa-tasks"></i>
                             <span class="nav-item">Jobs Board</span>
                         </a></li>
                     
-                    <li><a href="settings.html">
+                    <li><a href="/studentdashboard/<%= student._id%>/edit">
                             <i class="fas fa-cog"></i>
                             <span class="nav-item">Settings</span>
                         </a></li>
@@ -125,29 +125,29 @@
             <div class="main-body">
                 <div class="profile-form">
                     <h2>Edit Your Profile</h2>
-                    <form id="profile-form">
+                    <form action="/studentdashboard/<%= student._id%>/edit?_method=PUT" method="post" id="profile-form" >
                         <div class="form-group">
                             <label for="first-name">First Name</label>
-                            <input type="text" id="first-name" name="first-name" required>
+                            <input type="text" id="first-name" name="first-name" value="<%= student.firstName %>" required>
                         </div>
 
                         <div class="form-group">
                             <label for="last-name">Last Name</label>
-                            <input type="text" id="last-name" name="last-name" required>
+                            <input type="text" id="last-name" name="last-name" value="<%= student.lastName %>" required>
                         </div>
 
 
 
                         <div class="form-group">
                             <label for="linkedin">LinkedIn Profile</label>
-                            <input type="url" id="linkedin" name="linkedin"
-                                placeholder="https://www.linkedin.com/in/yourprofile">
+                            <input type="text" id="linkedin" name="linkedin"
+                                placeholder="https://www.linkedin.com/in/yourprofile" value="<%= student.url%>">
                         </div>
 
 
                         <div class="form-group">
                             <label for="committee">Committee</label>
-                            <input type="text" id="committee" name="committee">
+                            <input type="text" id="committee" name="committee" value="<%= student.committee %>">
                         </div>
 
                         <div class="form-group">
@@ -184,13 +184,13 @@
 
                         <div class="form-group">
                             <label for="bio">Bio</label>
-                            <textarea id="bio" name="bio" placeholder="Tell us about yourself..."></textarea>
+                            <textarea id="bio" name="interests" placeholder="Tell us about yourself..."><%= student.interests %></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="achievements">Achievements</label>
                             <textarea id="achievements" name="achievements"
-                                placeholder="List your key achievements..."></textarea>
+                                placeholder="List your key achievements..."><%= student.achievements %></textarea>
                         </div>
 
                         <div class="form-group">
@@ -201,13 +201,6 @@
             </div>
         </section>
     </div>
-
-    <script>
-        document.getElementById('profile-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('Profile updated successfully!');
-        });
-    </script>
 </body>
 
 </html>
