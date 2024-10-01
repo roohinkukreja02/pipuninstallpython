@@ -35,6 +35,22 @@ body{
     margin-left: 20px;
 }
 
+#Find2 {
+    background-color: blue; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Top/Bottom and Left/Right padding */
+    text-align: center; /* Center text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Allow padding */
+    font-size: 16px; /* Font size */
+    margin: 4px 2px; /* Margin for spacing */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, transform 0.3s; /* Transition effect */
+    margin-left: 20px;
+}
+
 #Find:hover {
     background-color: #45a049; /* Darker green on hover */
     transform: scale(1.05); /* Slightly enlarge on hover */

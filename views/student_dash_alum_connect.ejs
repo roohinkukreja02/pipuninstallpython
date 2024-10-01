@@ -171,18 +171,19 @@
                     </div>
                     <div class="text">
                         <h2 style="color: rgb(253, 254, 255);"><%= alumni.first_name %> <%= alumni.last_name%></h2>
-                        <span><%= alumni.department%></span>
+                        <span><%= alumni.department%>,</span>
+                        <span><%= alumni.domain%></span>
                         <span><%= alumni.interests%></span>
                     </div>
                 </div>
                 <form action="/studentdashboard/<%= student._id%>/requests/<%= alumni._id%>" method="post">
                     <% if(alumni.requestStudents.length === 0) {%>
                     <div class="job_salary">
-                        <button id="Find">Chat Request</button>
+                        <button id="Find">Request for mentorship</button>
                     </div>
                     <% } else { %>
                         <div class="job_salary">
-                            <button disabled>Request Send</button>
+                            <div id="Find2" disabled>Request Sent!</div>
                         </div>
                     <% } %>
                 </form>
