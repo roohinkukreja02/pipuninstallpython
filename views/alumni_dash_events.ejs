@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Job Dashboard | By Code Info</title>
+    <link rel="stylesheet" href="/stylesheets/style2.css" />
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+
+<body></body>
+
+<div class="container">
+    <nav>
+        <div class="navbar">
+            <div class="logo">
+                <img src="profile.avif" alt="">
+                <h1>Anuv Jain</h1>
+            </div>
+            <ul>
+                <li><a href="index.html">
+                        <i class="fas fa-user"></i>
+                        <span class="nav-item">Find Alumni</span>
+                    </a></li>
+                <li><a href="events.html">
+                        <i class="fas fa-chart-bar"></i>
+                        <span class="nav-item">Events</span>
+                    </a></li>
+                <li><a href="jobs.html">
+                        <i class="fas fa-tasks"></i>
+                        <span class="nav-item">Jobs Board</span>
+                    </a></li>
+                
+                <li><a href="settings.html">
+                        <i class="fas fa-cog"></i>
+                        <span class="nav-item">Settings</span>
+                    </a></li>
+                <li><a href="help.html">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="nav-item">Help</span>
+                    </a></li>
+                <li><a href="logout.html" class="logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="nav-item">Logout</span>
+                    </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="main">
+        <div class="main-top">
+            <p>Explore the universe!</p>
+        </div>
+
+        <div class="main-body">
+            <section id="blog">
+                <h2>Latest From our blog</h2>
+                <div class="featured-articles">
+                    <article class="article" onclick="openModal('modal1')">
+                        <img src="cricket.jpg">
+                        <h3>Shazam</h3>
+                        <p>Student Council's biggest sports faceoff</p>
+                        <button class="view-more-btn">Donate</button>
+                    </article>
+                    <article class="article" onclick="openModal('modal2')">
+                        <img src="tsec_hacks.jpeg">
+                        <h3>Need for Code 3.0</h3>
+                        <p>Take part in Codetantra's biggest hackathon this year</p>
+                        <button class="view-more-btn">Donate</button>
+                    </article>
+                    <article class="article" onclick="openModal('modal3')">
+                        <img src="google dev.jpg.webp" alt="article 3">
+                        <h3>Google Dev's Club</h3>
+                        <p>Join gdc in their info session about them</p>
+                        <button class="view-more-btn">Donate</button>
+                    </article>
+                    <article class="article" onclick="openModal('modal4')">
+                        <img src="codeissance.jpg" alt="article4">
+                        <h3>Codeissance 2024</h3>
+                        <p>Take part in Codestorm's biggest hackathon this year</p>
+                        <button class="view-more-btn">Donate</button>
+                    </article>
+                </div>
+                <div style="display: flex; justify-content: center;">
+                   
+                    <script>
+                        // Open the modal
+                        function openModal() {
+                          document.getElementById('myModal').style.display = 'block';
+                        }
+                      
+                        // Close the modal
+                        function closeModal() {
+                          document.getElementById('myModal').style.display = 'none';
+                        }
+                      
+                        // Close the modal when clicking outside the modal content
+                        window.onclick = function(event) {
+                          var modal = document.getElementById('myModal');
+                          if (event.target == modal) {
+                            modal.style.display = 'none';
+                          }
+                        }
+                      
+                        // Close modal on click of close button
+                        document.querySelector('.close').onclick = function() {
+                          closeModal();
+                        };
+                      </script>
+                      
+                </div>
+            </section>
+
+
+        </div>
+
+
+
+</div>
+</section>
+</div>
+
+</body>
+
+</html>
