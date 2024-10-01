@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const Alumni = require("../models/models_alumni");
 const cities = require("./allcities");
 const {firstname,lastname} = require("./names");
+const {deps,domains} = require('./departments')
 
 mongoose.connect('mongodb://localhost:27017/codeissance')
     .then(() => {
@@ -28,6 +29,9 @@ const seedDB = async()=>{
             first_name: `${temp(firstname)}`,
             last_name: `${temp(lastname)}`,
             email: `${Math.floor(Math.random() * 1000)}${Math.floor(Math.random() * 1000)}@xxx`,
+            department: `${deps[Math.floor(Math.random() * 5)]}`,
+            graduationYear: `${[Math.floor(Math.random() * 1990 + Math.floor(Math.random()*33))]}`,
+            domain:`${domains[Math.floor(Math.random() * 17)]}`,
             // images: [
             //     {
             //       url: 'https://res.cloudinary.com/da22oy8nw/image/upload/v1726842736/YelpCamp/rzpmjo86d1gtkgxgzdot.jpg',
