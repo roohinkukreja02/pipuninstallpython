@@ -102,7 +102,8 @@ module.exports.removeEvent = async(req,res)=>{
 module.exports.jobPage = async(req,res)=>{
     const {id} = req.params;
     const alumni = await Alumni.findById(id).populate('jobs')
-    res.render('AlumJob', {alumni})
+    const jobs = await Job.find({})
+    res.render('AlumJob', {alumni,jobs})
 }
 
 module.exports.addJob = async(req,res)=>{
