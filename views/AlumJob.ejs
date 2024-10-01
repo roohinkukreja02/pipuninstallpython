@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Job Dashboard | By Code Info</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Font Awesome Cdn Link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <style>
+        :root {
+            --main-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --lighter-color: #e0e0e7;
+            --light-color: #b0b0c0;
+            --dark-color: #52505e;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .bg-main {
+            background-color: var(--main-color);
+        }
+
+        .bg-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .text-lighter {
+            color: var(--lighter-color);
+        }
+
+        .text-light {
+            color: var(--light-color);
+        }
+
+        .text-dark {
+            color: var(--dark-color);
+        }
+
+        .hover\:bg-main:hover {
+            background-color: var(--main-color);
+        }
+
+        .hover\:bg-secondary:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .border-main {
+            border-color: var(--main-color);
+        }
+
+        .border-secondary {
+            border-color: var(--secondary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="profile.avif" alt="">
+                    <h1>User Profile</h1>
+                </div>
+                <ul>
+                    <li><a href="events.html">
+                        <i class="fas fa-chart-bar"></i>
+                        <span class="nav-item">Events</span>
+                    </a></li>
+                <li><a href="jobs.html">
+                        <i class="fas fa-tasks"></i>
+                        <span class="nav-item">Job Listing</span>
+                    </a></li>
+                    <li><a href="mentorship.html">
+                        <i class="fas fa-tasks"></i>
+                        <span class="nav-item">Mentorship</span>
+                    </a></li>
+                
+                <li><a href="settings.html">
+                        <i class="fas fa-cog"></i>
+                        <span class="nav-item">Settings</span>
+                    </a></li>
+                <li><a href="help.html">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="nav-item">Help</span>
+                    </a></li>
+                <li><a href="logout.html" class="logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="nav-item">Logout</span>
+                    </a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <section class="main">
+            <div class="main-top">
+                <p>Explore the universe!</p>
+            </div>
+
+            <div class="main-body">
+                <!-- Job Listing Section -->
+                <div id="job-listing" class="page-content">
+                    <h2 class="text-2xl font-semibold text-dark mb-4">Job Listing</h2>
+                    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                        <h3 class="text-lg font-semibold mb-2 text-dark">Post a New Job</h3>
+                        <form id="job-post-form" action="/submit-client-jobs" method="post">
+                            <div class="mb-4">
+                                <label class="block text-dark text-sm font-bold mb-2" for="job-title">
+                                    Job Title
+                                </label>
+                                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-dark leading-tight focus:outline-none focus:ring-2 focus:ring-main" id="job-title" type="text" placeholder="Enter job title" name="title">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-dark text-sm font-bold mb-2" for="job-description">
+                                    Job Description
+                                </label>
+                                <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-dark leading-tight focus:outline-none focus:ring-2 focus:ring-main" id="job-description" placeholder="Enter job description" name="description"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-dark text-sm font-bold mb-2" for="job-fees">
+                                    Job Fees ($)
+                                </label>
+                                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-dark leading-tight focus:outline-none focus:ring-2 focus:ring-main" id="job-fees" type="number" placeholder="Enter job fees" name="rate">
+                            </div>
+                            <button class="bg-main hover:bg-secondary text-lighter font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                                Post Job
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-lg font-semibold mb-4 text-dark">Your Posted Jobs</h3>
+                        <div id="posted-jobs" class="space-y-4">
+                            <!-- Posted jobs will be dynamically added here -->
+                            <% jobs.forEach(function(job){ %>
+                            <h4 class="text-md font-semibold text-dark"><%= job.title %></h4>
+                            <p class="text-light"><%= job.description %></p>
+                            <p class="text-sm text-light"><%= job.rate %></p>
+                            <div class="mt-2">
+                                <button class="text-main hover:text-secondary mr-2" onclick="editJob(this)">Edit</button>
+                                <button class="text-red-600 hover:text-red-800" onclick="deleteJob(this)">Delete</button>
+                            </div>
+                            <% }); %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
