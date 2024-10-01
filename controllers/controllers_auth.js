@@ -72,7 +72,7 @@ const controller_reg_student=async (req,res)=>{
     });
 
     if(create){
-        
+        await create.save()
         res.json({msg: "created"});
     }
        

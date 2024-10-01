@@ -16,10 +16,13 @@ router.route('/requests')
     .post(student.RequestMentor)
 
 router.route('/event')
-    .get(student.addEvent)
+    .get(student.listEvent)
     
 router.route('/event/:eventId')
     .delete(student.removeEvent)
+
+router.route('/job')
+    .get(student.jobList)
 
 router.route('/job/:jobId')
     .post(student.applyJob)

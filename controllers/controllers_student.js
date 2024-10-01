@@ -36,19 +36,22 @@ module.exports.edit = async(req,res)=>{
 module.exports.dashboard = async(req,res)=>{
     const {id} = req.params;
     const student = await Student.findById(id).populate('mentors').populate('currentJob');
-    res.render(`dashboard/${id}`, {student})
+    res.render('student_dash', {student})
+}
+
+module.exports.jobList = async(req,res)=>{
+    const{id} = req.params;
+    const student = await Student.findById(id)
+    const jobs = await Job.find({})
+    res.render('student_dash_jobs', {jobs,student})
 }
 
 module.exports.findMentors = async(req,res)=>{
     //search
     const {id} = req.params;
     const student = await Student.findById(id);
-    if(!student)
-    {
-        return res.send('student not found')
-    }
     const alumni = await Alumni.find({})
-    res.redirect(`studentdashboard/${id}`, {student, alumni})
+    res.render("student_dash_alum_connect", {student, alumni});
 }
 
 module.exports.RequestMentor = async(req,res)=>{
@@ -67,6 +70,13 @@ module.exports.addEvent = async(req,res)=>{
     event.author = student._id;
     await event.save();
     res.redirect(`studentdashboard/${id}`)
+}
+
+module.exports.listEvent = async(req,res)=>{
+    const {id} = req.params;
+    const student = await Student.findById(id)
+    const event = await Event.find({})
+    res.render(`student_dash`, {student})
 }
 // done
 module.exports.removeEvent = async(req,res)=>{
