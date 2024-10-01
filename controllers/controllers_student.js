@@ -37,6 +37,7 @@ module.exports.dashboard = async(req,res)=>{
     const {id} = req.params;
     const student = await Student.findById(id).populate('mentors').populate('currentJob');
     res.render('student_dash', {student})
+    res.render('student_dash', {student})
 }
 
 module.exports.jobList = async(req,res)=>{
@@ -53,7 +54,7 @@ module.exports.findMentors = async(req,res)=>{
         return res.send('student not found')
     }
     const alumni = await Alumni.find({})
-    res.redirect(`studentdashboard/${id}`, {student, alumni})
+    res.render("student_dash_alum_connect", {student, alumni});
 }
 
 module.exports.RequestMentor = async(req,res)=>{
