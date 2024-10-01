@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Donation Leaderboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #000;
+            --secondary-color: #fff;
+            --accent-color: #f0f0f0;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 3em;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        .leaderboard {
+            background-color: var(--secondary-color);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .leaderboard:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .leaderboard-header {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .leaderboard-header h2 {
+            margin: 0;
+            font-size: 2.2em;
+            font-weight: 600;
+        }
+
+        .leaderboard-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            padding: 25px;
+            border-bottom: 1px solid var(--accent-color);
+            transition: background-color 0.3s ease;
+        }
+
+        .leaderboard-item:hover {
+            background-color: rgba(0, 0, 0, 0.03);
+        }
+
+        .leaderboard-item:last-child {
+            border-bottom: none;
+        }
+
+        .rank {
+            font-size: 28px;
+            font-weight: 700;
+            margin-right: 25px;
+            width: 50px;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 25px;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .leaderboard-item:hover .avatar {
+            transform: scale(1.1);
+        }
+
+        .info {
+            flex-grow: 1;
+        }
+
+        .name {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .donation {
+            font-size: 18px;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .badge {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 14px;
+            margin-left: 15px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .points {
+            font-size: 20px;
+            font-weight: 700;
+            margin-left: 25px;
+            color: var(--primary-color);
+        }
+
+        .chart-container {
+            margin-top: 60px;
+            background-color: var(--secondary-color);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .view-more,
+        .view-less {
+            display: block;
+            width: 250px;
+            margin: 30px auto;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            text-align: center;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+            cursor: pointer;
+        }
+
+        .view-more:hover,
+        .view-less:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .leaderboard-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .rank,
+            .avatar,
+            .badge,
+            .points {
+                margin: 10px 0;
+            }
+
+            .info {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="container">
+        <h1>Alumni Donation Leaderboard</h1>
+        <div class="leaderboard">
+            <div class="leaderboard-header">
+                <h2>Top Donors</h2>
+            </div>
+            <ul class="leaderboard-list" id="leaderboardList"></ul>
+        </div>
+        <a href="#" class="view-more" id="viewMore">View More Donors</a>
+        <a href="#" class="view-less hidden" id="viewLess">View Less Donors</a>
+        <div class="chart-container">
+            <canvas id="donationChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const alumni = [
+            { name: "John Doe", donation: 5000, avatar: "https://i.pravatar.cc/150?img=1" },
+            { name: "Jane Smith", donation: 7500, avatar: "https://i.pravatar.cc/150?img=2" },
+            { name: "Bob Johnson", donation: 3000, avatar: "https://i.pravatar.cc/150?img=3" },
+            { name: "Alice Williams", donation: 10000, avatar: "https://i.pravatar.cc/150?img=4" },
+            { name: "Charlie Brown", donation: 2000, avatar: "https://i.pravatar.cc/150?img=5" },
+            { name: "Eva Green", donation: 6000, avatar: "https://i.pravatar.cc/150?img=6" },
+            { name: "David Lee", donation: 4500, avatar: "https://i.pravatar.cc/150?img=7" },
+            { name: "Grace Taylor", donation: 8000, avatar: "https://i.pravatar.cc/150?img=8" },
+            { name: "Frank White", donation: 3500, avatar: "https://i.pravatar.cc/150?img=9" },
+            { name: "Helen Davis", donation: 5500, avatar: "https://i.pravatar.cc/150?img=10" }
+        ];
+
+        // Function to determine badge and points based on donation amount
+        function getBadgeAndPoints(donation) {
+            if (donation >= 10000) return { badge: "Platinum", points: 1000 };
+            if (donation >= 5000) return { badge: "Gold", points: 500 };
+            if (donation >= 3000) return { badge: "Silver", points: 300 };
+            return { badge: "Bronze", points: 100 };
+        }
+
+        // Function to render the leaderboard
+        function renderLeaderboard(limit = 5) {
+            const leaderboardList = document.getElementById("leaderboardList");
+            leaderboardList.innerHTML = '';
+            // Sort alumni by donation in descending order
+            const sortedAlumni = [...alumni].sort((a, b) => b.donation - a.donation);
+
+            // Slice the array based on the limit
+            const displayAlumni = sortedAlumni.slice(0, limit);
+
+            displayAlumni.forEach((alum, index) => {
+                const { badge, points } = getBadgeAndPoints(alum.donation);
+                const li = document.createElement("li");
+                li.className = "leaderboard-item";
+                li.innerHTML = `
+                    <div class="rank">${index + 1}</div>
+                    <img src="${alum.avatar}" alt="${alum.name}" class="avatar">
+                    <div class="info">
+                        <div class="name">${alum.name}</div>
+                        <div class="donation">$${alum.donation.toLocaleString()}</div>
+                    </div>
+                    <div class="badge">${badge}</div>
+                    <div class="points">${points} pts</div>
+                `;
+                leaderboardList.appendChild(li);
+            });
+
+            // Toggle visibility of View More/Less buttons
+            toggleViewButtons(limit);
+        }
+
+        // Function to render the donation chart
+        function renderChart() {
+            const ctx = document.getElementById('donationChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: alumni.map(a => a.name),
+                    datasets: [{
+                        label: 'Donations',
+                        data: alumni.map(a => a.donation),
+                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                        borderColor: 'rgba(0, 0, 0, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Donation Amount ($)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Alumni Donations Chart',
+                            font: {
+                                size: 18,
+                                weight: 'bold'
+                            }
+                        },
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        // Function to toggle visibility of View More and View Less buttons
+        function toggleViewButtons(currentLimit) {
+            const viewMore = document.getElementById('viewMore');
+            const viewLess = document.getElementById('viewLess');
+
+            if (currentLimit >= alumni.length) {
+                viewMore.classList.add('hidden');
+                viewLess.classList.remove('hidden');
+            } else {
+                viewMore.classList.remove('hidden');
+                viewLess.classList.add('hidden');
+            }
+        }
+
+        // Function to handle View More button click
+        function handleViewMore(e) {
+            e.preventDefault();
+            renderLeaderboard(alumni.length);
+        }
+
+        // Function to handle View Less button click
+        function handleViewLess(e) {
+            e.preventDefault();
+            renderLeaderboard(5);
+        }
+
+        // Initialize the leaderboard and chart on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderLeaderboard();
+            renderChart();
+
+            // Attach event listeners to View More and View Less buttons
+            document.getElementById('viewMore').addEventListener('click', handleViewMore);
+            document.getElementById('viewLess').addEventListener('click', handleViewLess);
+        });
+    </script>
+</body>
+
+</html>
