@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Job Dashboard | By Code Info</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <style>
+        /* Additional styles for FAQs */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: #fff;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            font-size: 18px;
+            font-weight: bold;
+            padding: 20px;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #f9f9f9;
+        }
+
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 1000px;
+        }
+
+        @media (max-width: 600px) {
+            .faq-question {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+<div class="container">
+    <nav>
+        <div class="navbar">
+            <div class="logo">
+                <img src="profile.avif" alt="">
+                <h1>Anuv Jain</h1>
+            </div>
+            <ul>
+                <li><a href="events.html">
+                    <i class="fas fa-chart-bar"></i>
+                    <span class="nav-item">Events</span>
+                </a></li>
+            <li><a href="jobs.html">
+                    <i class="fas fa-tasks"></i>
+                    <span class="nav-item">Job Listing</span>
+                </a></li>
+                <li><a href="mentorship.html">
+                    <i class="fas fa-tasks"></i>
+                    <span class="nav-item">Mentorship</span>
+                </a></li>
+            
+            <li><a href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    <span class="nav-item">Settings</span>
+                </a></li>
+            <li><a href="help.html">
+                    <i class="fas fa-question-circle"></i>
+                    <span class="nav-item">Help</span>
+                </a></li>
+            <li><a href="logout.html" class="logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="nav-item">Logout</span>
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="main">
+        <div class="main-top">
+            <p>Explore the universe!</p>
+        </div>
+
+        <div class="main-body">
+            <div class="faq-container">
+                <h2 style="text-align: center; margin-bottom: 30px; color: #2c3e50;">Frequently Asked Questions</h2>
+                
+                
+                <div class="faq-item">
+                    <div class="faq-question">How do I update my profile information?</div>
+                    <div class="faq-answer">
+                        <p>To update your profile information, go to the "Settings" page from the navigation menu. There, you'll find options to edit your personal details, work experience, and educational background.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How can I search for job opportunities?</div>
+                    <div class="faq-answer">
+                        <p>You can find job opportunities by clicking on the "Jobs Board" link in the navigation menu. There, you'll be able to browse available positions, filter by industry or location, and apply directly through the platform.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How do I connect with other alumni?</div>
+                    <div class="faq-answer">
+                        <p>To connect with other alumni, use the "Find Alumni" feature in the navigation menu. You can search for alumni by name, graduation year, or industry. Once you find someone you'd like to connect with, you can send them a connection request.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How can I register for events?</div>
+                    <div class="faq-answer">
+                        <p>To register for events, navigate to the "Events" page using the link in the navigation menu. Browse through the list of upcoming events, click on the one you're interested in, and follow the registration instructions provided.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What should I do if I forget my password?</div>
+                    <div class="faq-answer">
+                        <p>If you forget your password, click on the "Forgot Password" link on the login page. Enter your registered email address, and we'll send you instructions to reset your password. Follow the link in the email to create a new password.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+</div>
+</section>
+</div>
+<script>
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const item = question.parentNode;
+            item.classList.toggle('active');
+        });
+    });
+</script>
+
+</body>
+
+</html>
