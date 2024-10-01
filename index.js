@@ -90,12 +90,11 @@ app.use((req, res, next) =>{
 app.use("/", routes_auth);
 // ROUTES
 app.use('/alumnidashboard/:id', alumniRoutes);
-//app.use('/studentdashboard/:id', studentRoutes);
-
-app.use("/", routes_extras);
+app.use('/studentdashboard/:id', studentRoutes);
+app.use('/', routes_extras);
 //app.use("/", routes_student_dash);
 
-app.use("/", sturoutes);
+app.use("/studentdashboard/:id", sturoutes);
 
 app.get('/home', async(req,res)=>{
   const alumni = await Alumni.find({});

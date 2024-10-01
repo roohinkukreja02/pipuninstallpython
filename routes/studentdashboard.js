@@ -16,7 +16,7 @@ router.route('/requests')
     .post(student.RequestMentor)
 
 router.route('/event')
-    .get(student.addEvent)
+    .get(student.listEvent)
     
 router.route('/event/:eventId')
     .delete(student.removeEvent)
