@@ -36,12 +36,12 @@ module.exports.edit = async(req,res)=>{
 module.exports.dashboard = async(req,res)=>{
     const {id} = req.params;
     const student = await Student.findById(id).populate('mentors').populate('currentJob');
-    console.log(student)
     res.render('student_dash', {student})
 }
 
 module.exports.jobList = async(req,res)=>{
-    
+    const jobs = await Job.find({})
+    res.render('student_dash_jobs', {jobs})
 }
 
 module.exports.findMentors = async(req,res)=>{
