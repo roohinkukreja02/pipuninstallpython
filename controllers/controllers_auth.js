@@ -214,42 +214,54 @@ const control_log=async (req,res)=>
     
     };
     
-    const verify_otp=async (req,res)=>{
-        const body=req.body;
-        const otp=body.otp;
-        console.log(otp)
+    const verify_otp = async (req, res) => {
+        const { otp } = req.body; // Destructure to get otp from the body
+    
+        console.log(otp);
         console.log(current_otp);
-        if(otp==current_otp)
-        {
-            //console.log(current_username);
-            //req.session.user=body
-            req.session.user1={email: current_email};
-            
+    
+        if (otp === current_otp) {
+            // Save current_email to the session
+            req.session.user1 = { email: current_email };
+    
             console.log(req.session.user1);
-            /*
+    
+            // Optionally save session to ensure it's persisted
             req.session.save((err) => {
                 if (err) {
                     console.error("Session save error:", err);
                 }
-        
             });
-            */
+    
             console.log(req.session.user1.email);
-            if(current_role==="alumni")
-            {
-                const alumni = await models_alumni.find({email: req.session.user1})
-                res.redirect(`/alumnidashboard/${alumni._id}`);
+    
+            // Check role and find corresponding user in the database
+            if (current_role === "alumni") {
+                try {
+                    const alumni = await models_alumni.findOne({ email: req.session.user1.email });
+                    if (!alumni) {
+                        return res.status(404).send("Alumni not found");
+                    }
+                    res.redirect(`/alumnidashboard/${alumni._id}`);
+                } catch (err) {
+                    console.error(err);
+                    res.status(500).send("Server error");
+                }
+            } else {
+                try {
+                    const student = await models_student.findOne({ email: req.session.user1.email });
+                    if (!student) {
+                        return res.status(404).send("Student not found");
+                    }
+                    res.redirect(`/studentdashboard/${student._id}`);
+                } catch (err) {
+                    console.error(err);
+                    res.status(500).send("Server error");
+                }
             }
-            else
-            {
-                const student = await models_student.find({email: req.session.user1})
-                res.redirect(`/studentdashboard/${student._id}`);
-            }
-
+        } else {
+            res.end("Incorrect OTP");
         }
-        else
-        res.end("incorrect otp");
-        
     };
     
     const logout=async (req,res)=>{
