@@ -55,17 +55,17 @@
             <div class="main-body">
                 <h1>FIND ALUMNI</h1>
                 <div>
-                    <form>
+                    <form action="/search" method="get">
                         <div class="search_bar" >
 
-                            <input type="search" placeholder="Enter first name...">
-                            <button id="Find">Search</button>
+                            <input type="search" placeholder="Enter first name..." name="query">
+                            <button id="Find" type="submit">Search</button>
                     </form>
                 </div>
                 <div style="display: flex; flex-direction: row; justify-content: space-between; gap: 50px;">
-                    <form>
-                        <select name="Domain..." id="" style="height: 30px; margin-left: 15px; border-radius: 15px; padding: 5px;">
-                            <option value="" disabled selected>Select a domain</option>
+                    <form action="/sort" method="get">
+                        <select name="Domain..." id="" style="height: 30px; margin-left: 15px; border-radius: 15px; padding: 5px;" name="domain">
+                            <option value="" name="domain" disabled selected>Select a domain</option>
 
                             <option value="Web Design">Web Design</option>
                             <option value="App Design">App Design</option>
@@ -87,7 +87,7 @@
 
                         </select>
                         <select class="filter" style="height: 30px; margin-left: 15px; border-radius: 15px; padding: 5px;">
-                            <option value="" disabled selected>Find city</option>
+                            <option value="" disabled selected name="city">Find city</option>
 
                             <option value="Thane">Thane</option>
                             <option value="Mumbai">Mumbai</option>
@@ -105,8 +105,8 @@
                             <option value="Mahape">Mahape</option>
 
                         </select>
-                        <select class="Year" style="height: 30px; margin-left: 15px; border-radius: 15px; padding: 5px;">
-                            <option value="" disabled selected>Graduation year</option>
+                        <select class="Year" style="height: 30px; margin-left: 15px; border-radius: 15px; padding: 5px;" name="grad_year">
+                            <option value=""  selected name="grad_year">Graduation year</option>
                             <option>2023</option>
                             <option value="2023">2023</option>
                             <option value="2022">2022</option>
@@ -135,7 +135,7 @@
 
 
                         </select>
-                        <button id="Find">Find</button>
+                        <button id="Find" type="submit">Find</button>
                 </form>
             </div>
 
@@ -144,11 +144,11 @@
                 <p>There are more than <span>400</span> Jobs</p>
                 <a href="#">See all</a>
             </div>
-
+            <!--
             <div class="job_card">
                 <div class="job_details">
                     <div class="img">
-                        <i class="fas fa-user"></i> <!-- Profile icon -->
+                        <i class="fas fa-user"></i> 
                     </div>
                     <div class="text">
                         <h2 style="color: rgb(253, 254, 255);">Anuj Jain</h2>
@@ -161,22 +161,25 @@
 
                 </div>
             </div>
+        -->
 
+            <% alumni.forEach(function(alumni){ %>
             <div class="job_card">
                 <div class="job_details">
                     <div class="img">
                         <i class="fas fa-user"></i> <!-- Profile icon -->
                     </div>
                     <div class="text">
-                        <h2 style="color: rgb(253, 254, 255);">Swara Patil</h2>
-                        <span>JavaScript Developer</span>
-                        <span>Google - Senior Post</span>
+                        <h2 style="color: rgb(253, 254, 255);"><%= alumni.first_name %> <%= alumni.last_name%></h2>
+                        <span><%= alumni.department%></span>
+                        <span><%= alumni.interests%></span>
                     </div>
                 </div>
                 <div class="job_salary">
                     <button id="Find">Chat Request</button>
                 </div>
             </div>
+            <% }); %>
 
 
 

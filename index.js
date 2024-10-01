@@ -27,6 +27,8 @@ const studentRoutes = require('./routes/studentdashboard')
 const forumRoutes = require('./routes/forums')
 const userRoutes = require('./routes/user')
 
+const sturoutes=require("./routes/routes_student_dash");
+
 const MongoStore = require('connect-mongo');
 const { applyJob } = require('./controllers/controllers_student');
 
@@ -88,10 +90,12 @@ app.use((req, res, next) =>{
 app.use("/", routes_auth);
 // ROUTES
 app.use('/alumnidashboard/:id', alumniRoutes);
-app.use('/studentdashboard/:id', studentRoutes);
+//app.use('/studentdashboard/:id', studentRoutes);
 
 app.use("/", routes_extras);
-app.use("/", routes_student_dash);
+//app.use("/", routes_student_dash);
+
+app.use("/", sturoutes);
 
 app.get('/home', async(req,res)=>{
   const alumni = await Alumni.find({});
