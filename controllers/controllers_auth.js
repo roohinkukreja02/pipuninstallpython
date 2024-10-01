@@ -73,7 +73,7 @@ const controller_reg_student=async (req,res)=>{
 
     if(create){
         await create.save()
-        res.json({msg: "created"});
+        res.redirect(`/studentdashboard/${create._id}`);
     }
        
     else{
@@ -146,7 +146,7 @@ const controller_reg_alumni=async (req,res)=>{
     if(create){
         create.geometry = geoData.features[0].geometry;
         await create.save()
-        res.json({msg: "created"});
+        res.redirect(`/alumnidashboard/${create._id}`);
     }
        
     else{

@@ -4,7 +4,7 @@ const map = new maptilersdk.Map({
     container: 'map',
     style: maptilersdk.MapStyle.BRIGHT,
     center: [79.43, 22],
-    zoom: 4
+    zoom: 2
 });
 
 map.on('load', function () {

@@ -160,9 +160,8 @@ schema_register.virtual('properties.popUp').get(function(){
                 ${this.first_name} ${this.last_name}
                 </b>    
             </h3>
-            <hr>
             <p>
-                ${this.city}...
+                ${this.city}
             </p>`
 })
 

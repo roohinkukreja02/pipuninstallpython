@@ -119,6 +119,12 @@ app.get('/gallery/add', (req,res)=>{
   res.render('gallery')
 })
 
+app.get('/display/:id', async(req,res)=>{
+  const {id} = req.params;
+  const alumni = await Alumni.findById(id);
+  res.render('popup', {alumni})
+})
+
 app.listen(port, (req,res)=>{
     console.log(`Server started on port ${port}`);
 });

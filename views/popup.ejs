@@ -177,13 +177,13 @@
                 <div class="profile-image-container">
                     <img src="https://via.placeholder.com/120" alt="Alumni Photo" class="profile-image">
                 </div>
-                <h2 class="profile-name">John Doe</h2>
-                <p class="profile-domain">Software Engineer, Web Development</p>
+                <h2 class="profile-name"><%= alumni.first_name %> <%= alumni.last_name %></h2>
+                <p class="profile-domain"><%= alumni.domain %></p>
             </div>
             <div class="profile-details">
                 <p><strong>Year of Graduation:</strong> 2020</p>
-                <p><strong>City:</strong> New York</p>
-                <p><strong>Current Company:</strong> Google</p>
+                <p><strong>City:</strong> <%= alumni.city %></p>
+                <p><strong>Current Company:</strong><%= alumni.company %></p>
             </div>
         </div>
     </div>
