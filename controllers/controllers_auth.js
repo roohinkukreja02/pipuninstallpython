@@ -224,6 +224,7 @@ const control_log=async (req,res)=>
             //console.log(current_username);
             //req.session.user=body
             req.session.user1={email: current_email};
+            
             console.log(req.session.user1);
             /*
             req.session.save((err) => {
@@ -235,9 +236,15 @@ const control_log=async (req,res)=>
             */
             console.log(req.session.user1.email);
             if(current_role==="alumni")
-            res.end("worked alumni");
+            {
+                const alumni = await models_alumni.find({email: req.session.user1})
+                res.redirect(`/alumnidashboard/${alumni._id}`);
+            }
             else
-            res.end("worked student");
+            {
+                const student = await models_student.find({email: req.session.user1})
+                res.redirect(`/studentdashboard/${student._id}`);
+            }
 
         }
         else

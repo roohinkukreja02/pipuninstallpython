@@ -14,16 +14,21 @@ router.route('/requests')
     .post(alumni.studentRequests)
 
 router.route('/event')
-    .get(alumni.addEvent)
+    .get(alumni.eventPage)
+    .post(alumni.addEvent)
     .delete(alumni.removeEvent)
 
 router.route('/job')
-    .get(alumni.addJob)
+    .get(alumni.jobPage)
+    .post(alumni.addJob)
     .delete(alumni.removeJob)
 
 router.route('/edit')
     .get(alumni.renderEdit)
     .put(alumni.edit)
+
+router.route('/help')
+    .get(alumni.help)
 
 
 module.exports = router;

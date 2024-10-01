@@ -67,34 +67,34 @@
             <div class="navbar">
                 <div class="logo">
                     <img src="profile.avif" alt="">
-                    <h1>User Profile</h1>
+                    <h1>Anuv Jain</h1>
                 </div>
                 <ul>
-                    <li><a href="events.html">
-                        <i class="fas fa-chart-bar"></i>
-                        <span class="nav-item">Events</span>
-                    </a></li>
-                <li><a href="jobs.html">
-                        <i class="fas fa-tasks"></i>
-                        <span class="nav-item">Job Listing</span>
-                    </a></li>
-                    <li><a href="mentorship.html">
-                        <i class="fas fa-tasks"></i>
-                        <span class="nav-item">Mentorship</span>
-                    </a></li>
-                
-                <li><a href="settings.html">
-                        <i class="fas fa-cog"></i>
-                        <span class="nav-item">Settings</span>
-                    </a></li>
-                <li><a href="help.html">
-                        <i class="fas fa-question-circle"></i>
-                        <span class="nav-item">Help</span>
-                    </a></li>
-                <li><a href="logout.html" class="logout">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span class="nav-item">Logout</span>
-                    </a></li>
+                    <li><a href="/alumnidashboard/<%= alumni._id%>/event">
+                            <i class="fas fa-chart-bar"></i>
+                            <span class="nav-item">Events</span>
+                        </a></li>
+                    <li><a href="/alumnidashboard/<%= alumni._id%>/job">
+                            <i class="fas fa-tasks"></i>
+                            <span class="nav-item">Job Listing</span>
+                        </a></li>
+                        <li><a href="/alumnidashboard/<%= alumni._id%>/requests">
+                            <i class="fas fa-tasks"></i>
+                            <span class="nav-item">Mentorship</span>
+                        </a></li>
+                    
+                    <li><a href="/alumnidashboard/<%= alumni._id%>/edit">
+                            <i class="fas fa-cog"></i>
+                            <span class="nav-item">Settings</span>
+                        </a></li>
+                    <li><a href="/alumnidashboard/<%= alumni._id%>/help">
+                            <i class="fas fa-question-circle"></i>
+                            <span class="nav-item">Help</span>
+                        </a></li>
+                    <li><a href="logout.html" class="logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span class="nav-item">Logout</span>
+                        </a></li>
                 </ul>
             </div>
         </nav>

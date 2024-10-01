@@ -14,6 +14,10 @@ module.exports.renderEdit = async(req,res)=>{
     res.render(`dashboard/${id}/edit`, {alumni})
 }
 
+module.exports.help = async(req,res)=>{
+    res.render(`AlumnHelp`, {alumni})
+}
+
 module.exports.edit = async(req,res)=>{
     const geoData = await maptilerClient.geocoding.forward(req.body.city, { limit: 1 });
     const {id} = req.params;
@@ -37,8 +41,9 @@ module.exports.edit = async(req,res)=>{
 
 module.exports.dashboard = async(req,res)=>{
     const {id} = req.params;
-    const alumni = await Alumni.findById(id).populate('students');
-    res.render(`dashboard/${id}`, {alumni})
+    const alumni = await Alumni.findById(id);
+    const event = await Event.find({});
+    res.render(`AlumEvents`, {alumni,event})
 }
 
 module.exports.requestPage = async(req,res)=>{
@@ -50,7 +55,7 @@ module.exports.requestPage = async(req,res)=>{
     }
     const students = await Student.find({mentors: alumni._id})
     console.log(students, alumni)
-    res.redirect(`dashboard/${id}`, {students, alumni})
+    res.render(`AlumMentor`, {students, alumni})
 }
 
 module.exports.studentRequests = async(req,res)=>{
@@ -71,6 +76,14 @@ module.exports.studentRequests = async(req,res)=>{
     res.redirect(`dashboard/${id}`)
 }
 
+module.exports.eventPage = async(req,res)=>{
+    const {id} = req.params;
+    const alumni = await Alumni.findById(id)
+    const event = await Event.find({});
+    res.render(`AlumEvents`, {alumni,event})
+}
+
+
 module.exports.addEvent = async(req,res)=>{
     const {id} = req.params;
     const alumni = await Alumni.findById(id)
@@ -84,6 +97,12 @@ module.exports.removeEvent = async(req,res)=>{
     const {id, eventId} = req.params;
     await Event.findByIdAndDelete(eventId)
     res.redirect(`dashboard/${id}`)
+}
+
+module.exports.jobPage = async(req,res)=>{
+    const {id} = req.params;
+    const alumni = await Alumni.findById(id).populate('jobs')
+    res.render('AlumJob', {alumni})
 }
 
 module.exports.addJob = async(req,res)=>{
